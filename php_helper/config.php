@@ -1,7 +1,7 @@
 <?php
 //This is the database configuragtion file for Movie Theater
 $dbhost = 'localhost';
-$dbuser = 'acopeman';
-$dbpass = 'password';
+$dbuser = 'root';
+$dbpass = '';
 $dbname = 'akcopema';
 ?>
