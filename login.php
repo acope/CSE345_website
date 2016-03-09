@@ -2,7 +2,7 @@
 <html lang="en">
 
     <?php
-    include 'php_helper/opendb.php';
+    require 'php_helper/opendb.php';
     ?>
     
 <head>
@@ -62,16 +62,17 @@
     <!--Main Section-->
     <!--Main section will include movies and thier times as well as misc things that we can come up with-->
     <!--The boarders are for looks only right now, we can change them or get rid of them-->
+    <!-- TODO create PHP for login, search for user and login or display user not found-->
     <section id="login-section">
         <div class="container">
             <div class="row equalHeight">
-                <div class="col-md-8">
+                <div class="col-md-5">
                   <form class="form-horizontal">
                       
                       <div class="form-group">
                         <label for="inputUsername" class="col-sm-2 control-label">Username</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputUsername" placeholder="Username">
+                          <input type="email" class="form-control" id="inputUsername" placeholder="e.g. jdoe@cse345.com">
                         </div>
                       </div>
                       
@@ -85,6 +86,8 @@
                       <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                           <button type="submit" class="btn btn-default">Sign in</button>
+                            <!-- TODO create href link to create account page-->
+                            <a href="">Create an Account</a>   
                         </div>
                       </div>
                     </form>
@@ -105,8 +108,6 @@
     <!-- Plugin JavaScript -->
     <script src="js/jquery.easing.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
 
     <!--OWL Carousel Plugin Files-->
     <!--  jQuery 1.7+  -->
