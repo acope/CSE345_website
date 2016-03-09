@@ -99,7 +99,7 @@
                     }
                 else
                     {
-                        echo 'Invalid Username and Password Combination';
+                        echo 'Invalid Username and/or Password';
                     }
             }
     ?>
