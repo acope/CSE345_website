@@ -1,9 +1,9 @@
+<?php session_start(); ?>
+<?php require_once('php_helper/opendb.php');?>
 <!DOCTYPE html>
 <html lang="en">
 
-    <?php
-    require 'php_helper/opendb.php';
-    ?>
+    
     
 <head>
 
@@ -63,38 +63,53 @@
     <!--Main section will include movies and thier times as well as misc things that we can come up with-->
     <!--The boarders are for looks only right now, we can change them or get rid of them-->
     <!-- TODO create PHP for login, search for user and login or display user not found-->
-    <section id="login-section">
-        <div class="container">
-            <div class="row equalHeight">
-                <div class="col-md-5">
-                  <form class="form-horizontal">
-                      
-                      <div class="form-group">
-                        <label for="inputUsername" class="col-sm-2 control-label">Username</label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputUsername" placeholder="e.g. jdoe@cse345.com">
-                        </div>
-                      </div>
-                      
-                      <div class="form-group">
-                        <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-                        <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                        </div>
-                      </div>
-        
-                      <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                          <button type="submit" class="btn btn-default">Sign in</button>
-                            <!-- TODO create href link to create account page-->
-                            <a href="">Create an Account</a>   
-                        </div>
-                      </div>
-                    </form>
-                </div>
-            </div>  
+<div class="form-wrapper">
+
+    <form action="#" method="post">
+        <h3>Login here</h3>
+
+        <div class="form-item">
+            <input type="text" name="user" required="required" placeholder="Username" autofocus required></input>
         </div>
-    </section>
+
+        <div class="form-item">
+            <input type="password" name="pass" required="required" placeholder="Password" required></input>
+        </div>
+
+        <div class="button-panel">
+            <input type="submit" class="button" title="Log In" name="login" value="Login"></input>
+        </div>
+    </form>
+    
+    <?php
+        if (isset($_POST['login']))
+            {
+                $username = mysqli_real_escape_string($conn, $_POST['user']);
+                $password = mysqli_real_escape_string($conn, $_POST['pass']);
+
+                $query 		= mysqli_query($conn, "SELECT * FROM USER_ACCOUNT WHERE  USER_PASSENCRYPT='$password' and USER_EMAIL='$username'");
+                $row		= mysqli_fetch_array($query);
+                $num_row 	= mysqli_num_rows($query);
+
+                if ($num_row > 0) 
+                    {			
+                        $_SESSION['USER_ACCOUNT_ID']=$row['USER_ACCOUNT_ID'];
+                        header('location:index.php');
+
+                    }
+                else
+                    {
+                        echo 'Invalid Username and Password Combination';
+                    }
+            }
+    ?>
+        <div class="reminder">
+            <p>Not a member? <a href="#">Sign up now</a></p>
+            <p><a href="#">Forgot password?</a></p>
+        </div>
+
+</div>
+
     
     
     
