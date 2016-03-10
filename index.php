@@ -55,7 +55,19 @@
                         <h1> AFB Theaters</h1>
                     </div>
                     <div class="col-lg-4 text-right">
-                        <a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>
+                        <!--<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>-->
+                        <?php
+                            if(isset($_SESSION['loggedin'])){
+                                if($_SESSION['loggedin'] != 1){
+                                    echo( '<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>');
+                                }else{
+                                    echo('<a  href="php_helper/logout.php" target="_self"> <h3>LOGOUT</h3> </a>');
+                                }
+                            }else{
+                                $_SESSION['loggedin'] = 0;
+                                echo( '<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>');
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

@@ -71,6 +71,7 @@
     </form>
     
     <?php
+
         if (isset($_POST['login']))
             {
                 $username = mysqli_real_escape_string($conn, $_POST['user']);
@@ -83,6 +84,8 @@
                 if ($num_row > 0) 
                     {			
                         $_SESSION['user_name']=$row['USER_FNAME'];
+                        
+                        $_SESSION['loggedin'] = 1;
                         header('location:index.php');
 
                     }
