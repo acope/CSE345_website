@@ -51,19 +51,23 @@
         <div class="banner-body">
             <div class="container">
                 <div class="row equalHeight">
-                    <div class="col-lg-8 text-left">
+                    <div class="col-lg-6 text-left">
                         <h1> AFB Theaters</h1>
                     </div>
-                    <div class="col-lg-4 text-right">
+                    <div class="col-lg-6 text-right">
                         <!--<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>-->
                         <?php
+                            // Test to see if the loggedin variable has been made
+                            // If not it creates it and sets it to 0 (Not logged in)
                             if(isset($_SESSION['loggedin'])){
+                                // NOTE: dont know if this statement is redundant, who cares it works fix later! :)
                                 if($_SESSION['loggedin'] != 1){
                                     echo( '<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>');
                                 }else{
-                                    echo('<a  href="php_helper/logout.php" target="_self"> <h3>LOGOUT</h3> </a>');
+                                    echo("Welcome ".$_SESSION['user_name']." ".'<a  href="php_helper/logout.php" target="_self"> <h3>LOGOUT</h3> </a>');
                                 }
                             }else{
+                                
                                 $_SESSION['loggedin'] = 0;
                                 echo( '<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>');
                             }

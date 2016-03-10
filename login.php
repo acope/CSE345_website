@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php require_once('php_helper/opendb.php');?>
+<?php require_once'php_helper/opendb.php';?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,7 +73,7 @@
     <?php
 
         if (isset($_POST['login']))
-            {
+        {
                 $username = mysqli_real_escape_string($conn, $_POST['user']);
                 $password = mysqli_real_escape_string($conn, $_POST['pass']);
 
@@ -82,18 +82,19 @@
                 $num_row = mysqli_num_rows($query);
 
                 if ($num_row > 0) 
-                    {			
+                {			
                         $_SESSION['user_name']=$row['USER_FNAME'];
-                        
+                        $_SESSION['user_id']=$row['USER_ACCOUNT_ID'];
+                        // loggedin will be used to see if the user has logged in
                         $_SESSION['loggedin'] = 1;
                         header('location:index.php');
 
-                    }
-                else
-                    {
+                }
+                else 
+                {
                         echo 'Invalid Username and/or Password';
-                    }
-            }
+                }
+        }//end if
     ?>
         <div class="reminder">
             <p>Not a member? <a href="#">Sign up now</a></p>
