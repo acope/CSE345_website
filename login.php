@@ -27,17 +27,6 @@
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
-    <!--OWL Carousel-->
-    <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="owl-carousel/owl.theme.css">
-    <link rel="stylesheet" href="owl-carousel/owl.transitions.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
@@ -87,13 +76,13 @@
                 $username = mysqli_real_escape_string($conn, $_POST['user']);
                 $password = mysqli_real_escape_string($conn, $_POST['pass']);
 
-                $query 		= mysqli_query($conn, "SELECT * FROM USER_ACCOUNT WHERE  USER_PASSENCRYPT='$password' and USER_EMAIL='$username'");
-                $row		= mysqli_fetch_array($query);
-                $num_row 	= mysqli_num_rows($query);
+                $query = mysqli_query($conn, "SELECT * FROM USER_ACCOUNT WHERE  USER_PASSENCRYPT='$password' and USER_USERNAME='$username'");
+                $row = mysqli_fetch_array($query);
+                $num_row = mysqli_num_rows($query);
 
                 if ($num_row > 0) 
                     {			
-                        $_SESSION['USER_ACCOUNT_ID']=$row['USER_ACCOUNT_ID'];
+                        $_SESSION['user_name']=$row['USER_FNAME'];
                         header('location:index.php');
 
                     }
@@ -105,7 +94,6 @@
     ?>
         <div class="reminder">
             <p>Not a member? <a href="#">Sign up now</a></p>
-            <p><a href="#">Forgot password?</a></p>
         </div>
 
 </div>
@@ -115,7 +103,7 @@
     
     
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="js/jquery.js"></script> 
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -123,11 +111,6 @@
     <!-- Plugin JavaScript -->
     <script src="js/jquery.easing.min.js"></script>
 
-
-    <!--OWL Carousel Plugin Files-->
-    <!--  jQuery 1.7+  -->
-    <script src="js/jquery-2.1.4.min.js"></script>
-    <script src="assets/js/jquery-1.9.1.min.js"></script>
      
     
     
