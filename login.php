@@ -87,7 +87,7 @@
                 $username = mysqli_real_escape_string($conn, $_POST['user']);
                 $password = mysqli_real_escape_string($conn, $_POST['pass']);
 
-                $query 		= mysqli_query($conn, "SELECT * FROM USER_ACCOUNT WHERE  USER_PASSENCRYPT='$password' and user_username='$username'");
+                $query 		= mysqli_query($conn, "SELECT * FROM USER_ACCOUNT WHERE  USER_PASSENCRYPT='$password' and USER_EMAIL='$username'");
                 $row		= mysqli_fetch_array($query);
                 $num_row 	= mysqli_num_rows($query);
 
@@ -104,9 +104,8 @@
             }
     ?>
         <div class="reminder">
-            <p>Not a member? <a href="accountCreation.php">Sign up now</a></p>
-           <!-- FUTURE create a forgot password page -->
-            <!-- <p><a href="#">Forgot password?</a></p> -->
+            <p>Not a member? <a href="#">Sign up now</a></p>
+            <p><a href="#">Forgot password?</a></p>
         </div>
 
 </div>
