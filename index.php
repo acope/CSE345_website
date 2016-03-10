@@ -1,7 +1,6 @@
 <?php 
     session_start();
     require_once('php_helper/opendb.php');
-    $result=mysqli_query($con, "select * from users where user_id='$session_id'")
 ?>
 
 <!DOCTYPE html>
@@ -57,8 +56,6 @@
                     </div>
                     <div class="col-lg-4 text-right">
                         <a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>
-                    
-                        <a  href="login.php" target="_self"> <h3><?php echo $result ?></h3> </a>
                     </div>
                 </div>
             </div>
