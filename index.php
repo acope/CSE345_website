@@ -64,7 +64,7 @@
                                 if($_SESSION['loggedin'] != 1){
                                     echo( '<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>');
                                 }else{
-                                    echo("Welcome ".$_SESSION['user_name']." ".'<a  href="php_helper/logout.php" target="_self"> <h3>LOGOUT</h3> </a>');
+                                    echo("Welcome ".$_SESSION['user_name']." ".'<a  href="logout.php" target="_self"> <h3>LOGOUT</h3> </a>');
                                 }
                             }else{
                                 
