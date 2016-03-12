@@ -76,6 +76,7 @@ a:focus {
 }
 
 .movie-table {
+    margin: 10px 0px 10px 0px;
     padding: 10px;
     border: 2px solid black;
     background-color: white;
