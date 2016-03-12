@@ -28,7 +28,10 @@
 .owl-carousel .owl-wrapper-outer{
 	overflow: hidden;
 	position: relative;
-	width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+	width: 1200px;
 }
 .owl-carousel .owl-wrapper-outer.autoHeight{
 	-webkit-transition: height 500ms ease-in-out;

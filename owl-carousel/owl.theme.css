@@ -21,8 +21,8 @@
 	-webkit-border-radius: 45px;
 	-moz-border-radius: 45px;
 	border-radius: 45px;
-	/*background: #869791;*/ /*uncomment for button background*/
-    background: transparent;
+	background: #869791; /*uncomment for button background*/
+    /*background: transparent;*/
 	filter: Alpha(Opacity=50);/*IE7 fix*/
 	opacity: 0.75;
 }

@@ -82,18 +82,18 @@
     <!-- Images will be placed here, images can include food, movies, ect.-->
     <section id="carousel">
         <div class="carousel-section">
-            <div class="container">
+            <div class="fluid-container">
                 <div class="col-lg-12">
                     <!--Start of Carousel-->
-                        <div class="wrapper-with-margin">
+                        <div class="wrapper-with-margin" style="padding: 10px">
                             <div id="projects-carousel" class="owl-carousel owl-theme">
-                                <div class="item"><a><img class="lazyOwl" data-src="/img/projects/cit337project.jpg" alt="CIT337"></a></div>             
+                                <div class="item"><a><img class="lazyOwl" data-src="/img/movie_banner/Superman_vs_Batman-178752.jpg" alt="Superman vs Batman"></a></div>             
 
-                                <div class="item"><a><img class="lazyOwl" data-src="/img/projects/2048project.jpg" alt="2048"></a></div>             
+                                <div class="item"><a><img class="lazyOwl" data-src="/img/movie_banner/Ultimate_Captain_America_Marathon-228560.png" alt="Captain America"></a></div>             
 
-                                <div class="item"><a><img class="lazyOwl" data-src="/img/projects/hcs12soundproject.jpg" alt="HCS12 Sound"></a></div>             
+                                <div class="item"><a><img class="lazyOwl" data-src="/img/movie_banner/Divergent_Series_Allegiant-178922.jpg" alt="Divergent"></a></div>             
 
-                                <div class="item"><a><img class="lazyOwl" data-src="/img/projects/pegsproject.jpg" alt="PEGs"></a></div>             
+                                <div class="item"><a><img class="lazyOwl" data-src="/img/movie_banner/Captain_America_Civil_War-166377.jpg" alt="Ultimate Captain America"></a></div>             
                             </div>
                         </div>
                 </div>
@@ -150,7 +150,7 @@
     <script>
         $(document).ready(function() {
           $("#projects-carousel").owlCarousel({
-                navigation : true,
+                navigation : false,
                 slideSpeed : 1600,
                 paginationSpeed : 4000,
                 rewindSpeed: 900,
@@ -158,11 +158,11 @@
                 stopOnHover : true,
                 autoPlay: true,
                 lazyLoad: true,
-                transitionStyle : "backSlide",
-                /*navigationText: [
+                transitionStyle : "fade",
+                navigationText: [
                     "<i class='fa fa-chevron-left fa-fw'></i>",
                     "<i class='fa fa-chevron-right fa-fw'></i>"
-                ],*/
+                ],
                 navigationText : false,
                 loop: true
           });  
