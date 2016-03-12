@@ -110,15 +110,13 @@
             <div class="row equalHeight">
                 <div class="col-md-8">
                     <!--This could be populated using for loops in PHP to keep times and movie next to each other or maybe use a drop down menu -->
-                    <div class="equalHeight">
-                        
-                        
+                    <div class="equalHeight">                                               
                         <div class="col-md-8 movie-table">
                             <p>movie info</p>
                         </div>
                         <div class="col-md-4 movie-table">
-                            movie time
-                        </div>
+                            movie time                            
+                        </div>                        
                     </div>
                 </div>
                 <div class="col-md-4 movie-table" >
