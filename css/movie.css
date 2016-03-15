@@ -127,11 +127,11 @@ h3{
 
 }
 input[type='password']{
-    background: transparent url("img/pass.jpg") no-repeat;
+    /*background: transparent url("img/pass.jpg") no-repeat;*/
     background-position: 10px 50%;
 }
 input[type='text']{
-    background: transparent url("img/user.jpg") no-repeat;
+    /*background: transparent url("img/user.jpg") no-repeat;*/
     background-position: 10px 50%;
 
 }
