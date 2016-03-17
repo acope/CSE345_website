@@ -54,48 +54,6 @@
                     <div class="col-lg-6 text-left">
                         <h1> AFB Theaters</h1>
                     </div>
-                    <div class="col-lg-6 text-right">
-                        <!--<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>-->
-                        <?php
-                            // Test to see if the loggedin variable has been made
-                            // If not it creates it and sets it to 0 (Not logged in)
-                            if(isset($_SESSION['loggedin'])){
-                                // NOTE: dont know if this statement is redundant, who cares it works fix later! :)
-                                if($_SESSION['loggedin'] != 1){
-                                    echo( '<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>');
-                                }else{
-                                    echo("Welcome ".$_SESSION['user_name']." ".'<a  href="logout.php" target="_self"> <h3>LOGOUT</h3> </a>');
-                                }
-                            }else{
-                                
-                                $_SESSION['loggedin'] = 0;
-                                echo( '<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>');
-                            }
-                        ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Image Carousel Section -->
-    <!-- Images will be placed here, images can include food, movies, ect.-->
-    <section id="carousel">
-        <div class="carousel-section">
-            <div class="fluid-container">
-                <div class="col-lg-12">
-                    <!--Start of Carousel-->
-                        <div class="wrapper-with-margin" style="padding: 10px">
-                            <div id="projects-carousel" class="owl-carousel owl-theme">
-                                <div class="item"><a><img class="lazyOwl" data-src="/img/movie_banner/Superman_vs_Batman-178752.jpg" alt="Superman vs Batman"></a></div>             
-
-                                <div class="item"><a><img class="lazyOwl" data-src="/img/movie_banner/Ultimate_Captain_America_Marathon-228560.png" alt="Captain America"></a></div>             
-
-                                <div class="item"><a><img class="lazyOwl" data-src="/img/movie_banner/Divergent_Series_Allegiant-178922.jpg" alt="Divergent"></a></div>             
-
-                                <div class="item"><a><img class="lazyOwl" data-src="/img/movie_banner/Captain_America_Civil_War-166377.jpg" alt="Ultimate Captain America"></a></div>             
-                            </div>
-                        </div>
                 </div>
             </div>
         </div>
