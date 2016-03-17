@@ -40,11 +40,11 @@ CREATE TABLE `movie` (
 -- Dumping data for table `movie`
 --
 
-LOCK TABLES `movie` WRITE;
+
 /*!40000 ALTER TABLE `movie` DISABLE KEYS */;
 INSERT INTO `movie` VALUES (1,'Everest','Baltasar Kormákur',' Jason Clarke','PG-13','A climbing expedition on Mt. Everest is devastated by a severe snow storm.',2015,120,'<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dOHS-mxn0RQ\" frameborder=\"0\" allowfullscreen></iframe>'),(2,'Dawn of the Planet of the Apes','Matt Reeves',' Gary Oldman','PG-13','A growing nation of genetically evolved apes led by Caesar is threatened by a band of human survivors of the devastating virus unleashed a decade earlier.',2014,130,'<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/EcRIUU_QZiY\" frameborder=\"0\" allowfullscreen></iframe>'),(3,'The Dark Knight','Christopher Nolan',' Christian Bale','PG-13','When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.',2008,150,'<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/EXeTwQWrcwY\" frameborder=\"0\" allowfullscreen></iframe>'),(4,'Interstellar','Christopher Nolan','Matthew McConaughey','PG-13','A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',2014,170,'<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/0vxOhd4qlnA\" frameborder=\"0\" allowfullscreen></iframe>'),(5,'The Bourne Identity',' Doug Liman','Matt Damon','PG-13','A man is picked up by a fishing boat, bullet-riddled and suffering from amnesia, before racing to elude assassins and regain his memory.',2002,120,'<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/FpKaB5dvQ4g\" frameborder=\"0\" allowfullscreen></iframe>');
 /*!40000 ALTER TABLE `movie` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Table structure for table `movie_times`
@@ -67,11 +67,11 @@ CREATE TABLE `movie_times` (
 -- Dumping data for table `movie_times`
 --
 
-LOCK TABLES `movie_times` WRITE;
+
 /*!40000 ALTER TABLE `movie_times` DISABLE KEYS */;
 INSERT INTO `movie_times` VALUES (1,1),(3,1),(5,1),(2,2),(4,2),(11,3),(12,3),(13,3),(14,3),(15,3),(6,4),(8,4),(10,4),(7,5),(9,5);
 /*!40000 ALTER TABLE `movie_times` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Table structure for table `reservation`
@@ -99,10 +99,10 @@ CREATE TABLE `reservation` (
 -- Dumping data for table `reservation`
 --
 
-LOCK TABLES `reservation` WRITE;
+
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Table structure for table `showroom`
@@ -122,11 +122,11 @@ CREATE TABLE `showroom` (
 -- Dumping data for table `showroom`
 --
 
-LOCK TABLES `showroom` WRITE;
+
 /*!40000 ALTER TABLE `showroom` DISABLE KEYS */;
 INSERT INTO `showroom` VALUES (1,'Room 1'),(2,'Room 2'),(3,'Room 3');
 /*!40000 ALTER TABLE `showroom` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Table structure for table `showtime`
@@ -150,11 +150,11 @@ CREATE TABLE `showtime` (
 -- Dumping data for table `showtime`
 --
 
-LOCK TABLES `showtime` WRITE;
+
 /*!40000 ALTER TABLE `showtime` DISABLE KEYS */;
 INSERT INTO `showtime` VALUES (1,1,'10:00:00','13:00:00'),(2,1,'13:00:00','16:00:00'),(3,1,'16:00:00','19:00:00'),(4,1,'19:00:00','22:00:00'),(5,1,'22:00:00','01:00:00'),(6,2,'10:00:00','13:00:00'),(7,2,'13:00:00','16:00:00'),(8,2,'16:00:00','19:00:00'),(9,2,'19:00:00','22:00:00'),(10,2,'22:00:00','01:00:00'),(11,3,'10:00:00','13:00:00'),(12,3,'13:00:00','16:00:00'),(13,3,'16:00:00','19:00:00'),(14,3,'19:00:00','22:00:00'),(15,3,'22:00:00','01:00:00');
 /*!40000 ALTER TABLE `showtime` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Table structure for table `user_account`
@@ -180,7 +180,7 @@ CREATE TABLE `user_account` (
 -- Dumping data for table `user_account`
 --
 
-LOCK TABLES `user_account` WRITE;
+
 /*!40000 ALTER TABLE `user_account` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user_account` ENABLE KEYS */;
 UNLOCK TABLES;
