@@ -21,6 +21,7 @@
     <!-- Custom CSS -->
     <!-- <link href="css/grayscale.css" rel="stylesheet"> -->
     <link href="css/movie.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -53,7 +54,6 @@
     <!--The boarders are for looks only right now, we can change them or get rid of them-->
     <!-- TODO create PHP for login, search for user and login or display user not found-->
 <div class="form-wrapper">
-
     <form action="#" method="post">
         <h3>Login here</h3>
 
