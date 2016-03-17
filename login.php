@@ -54,7 +54,6 @@
     <!--The boarders are for looks only right now, we can change them or get rid of them-->
     <!-- TODO create PHP for login, search for user and login or display user not found-->
 <div class="form-wrapper">
-
     <form action="#" method="post">
         <h3>Login here</h3>
 

@@ -66,24 +66,33 @@
     </section>
     
  <div class="form-wrapper">  
-    <form name="reg" action="#" onsubmit="" method="post">
-        <div class="form-item">Email:</div>
-            <input type="text" name="email" required="required" placeholder="jdoe@CSE345.com" autofocus required></input>
-
-        <div class="form-item">Password:</div>
-            <input type="text" name="password" required="required" placeholder="Password"></input>  
+    <form action="#" method="post">
+        <h3> Register here</h3>
         
+        <div class="form-item">Email:
+            <input type="text" name="email" required="required" placeholder="jdoe@CSE345.com" autofocus required></input>
+        </div>
+     
+        <div class="form-item">Password:
+            <input type="text" name="password" required="required" placeholder="Password"></input>  
+        </div>
+    
         <div class="form-item">First Name:</div>
             <input type="text" name="fname" required="required" placeholder="John"></input>
+        </div>
 
         <div class="form-item">Last Name:</div>
             <input type="text" name="lname" required="required" placeholder="Doe"></input>
-        
+        </div>
+
         <div class="form-item">Address:</div>
             <input type="text" name="address" required="required" placeholder=""></input>
+        </div>
 
         <div class="button-panel"></div>
             <input name="submit" type="submit" value="Submit" ></input>
+        </div>
+
     </form>
  </div>    
     
