@@ -13,7 +13,7 @@
     <meta name="description" content="Login Page">
     <meta name="author" content="Austin Copeman">
 
-    <title>AFB Theaters</title>
+    <title>Login</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -58,7 +58,7 @@
         <h3>Login here</h3>
 
         <div class="form-item">
-            <input type="text" name="user" required="required" placeholder="Username" autofocus required></input>
+            <input type="text" name="email" required="required" placeholder="Email" autofocus required></input>
         </div>
 
         <div class="form-item">
@@ -74,7 +74,7 @@
 
         if (isset($_POST['login']))
         {
-                $useremail = mysqli_real_escape_string($conn, $_POST['user']);
+                $useremail = mysqli_real_escape_string($conn, $_POST['email']);
                 $password = mysqli_real_escape_string($conn, $_POST['pass']);
 
                 $query = mysqli_query($conn, "SELECT * FROM USER_ACCOUNT WHERE  USER_PASSENCRYPT='$password' and USER_EMAIL='$useremail'");
