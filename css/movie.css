@@ -21,6 +21,14 @@ a {
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
+m{
+    color: black;
+    width: auto;
+    height: auto;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all.2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
 
 a:hover,
 a:focus {
