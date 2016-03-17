@@ -108,21 +108,19 @@
     <section id="main">
         <div class="container">
             <div class="row equalHeight">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <!--This could be populated using for loops in PHP to keep times and movie next to each other or maybe use a drop down menu -->
                     <div class="equalHeight">
-                        
-                        
-                        <div class="col-md-8 movie-table">
-                            <p>movie info</p>
-                        </div>
                         <div class="col-md-4 movie-table">
-                            movie time
+                            <p>Movie Photo</p>
+                        </div>
+                         <div class="col-md-8 movie-table">
+                            <p>Order Details</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 movie-table" >
-                    <p> update/misc times go here</p>
+                    <div class="col-md-12 movie-table" >
+                        <p>Confirmation Info</p>
+                    </div>
                 </div>
             </div>  
         </div>
