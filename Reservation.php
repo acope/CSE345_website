@@ -78,7 +78,7 @@
                         
                          
                         <div class="col-lg-4">
-                            <img width="182" height="268" src = "http://ia.media-imdb.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg" alt="The Dark Knight">
+                            <img width="182" height="268" src = "http://ia.media-imdb.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX640_SY720_.jpg" alt="The Dark Knight">
                              
                         </div>
                         
