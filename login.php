@@ -21,6 +21,7 @@
     <!-- Custom CSS -->
     <!-- <link href="css/grayscale.css" rel="stylesheet"> -->
     <link href="css/movie.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
