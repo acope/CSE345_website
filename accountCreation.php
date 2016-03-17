@@ -16,7 +16,7 @@
     <meta name="description" content="My personal website">
     <meta name="author" content="Austin Copeman">
 
-    <title>AFB Theaters</title>
+    <title>Account Creation</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -77,19 +77,19 @@
             <input type="text" name="password" required="required" placeholder="Password"></input>  
         </div>
     
-        <div class="form-item">First Name:</div>
+        <div class="form-item">First Name:
             <input type="text" name="fname" required="required" placeholder="John"></input>
         </div>
 
-        <div class="form-item">Last Name:</div>
+        <div class="form-item">Last Name:
             <input type="text" name="lname" required="required" placeholder="Doe"></input>
         </div>
 
-        <div class="form-item">Address:</div>
+        <div class="form-item">Address:
             <input type="text" name="address" required="required" placeholder=""></input>
         </div>
 
-        <div class="button-panel"></div>
+        <div class="button-panel">
             <input name="submit" type="submit" value="Submit" ></input>
         </div>
 
