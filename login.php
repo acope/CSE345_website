@@ -74,17 +74,16 @@
 
         if (isset($_POST['login']))
         {
-                $username = mysqli_real_escape_string($conn, $_POST['user']);
+                $useremail = mysqli_real_escape_string($conn, $_POST['user']);
                 $password = mysqli_real_escape_string($conn, $_POST['pass']);
 
-                $query = mysqli_query($conn, "SELECT * FROM USER_ACCOUNT WHERE  USER_PASSENCRYPT='$password' and USER_USERNAME='$username'");
+                $query = mysqli_query($conn, "SELECT * FROM USER_ACCOUNT WHERE  USER_PASSENCRYPT='$password' and USER_EMAIL='$useremail'");
                 $row = mysqli_fetch_array($query);
                 $num_row = mysqli_num_rows($query);
 
                 if ($num_row > 0) 
                 {			
                         $_SESSION['user_name']=$row['USER_FNAME'];
-                        $_SESSION['user_id']=$row['USER_ACCOUNT_ID'];
                         // loggedin will be used to see if the user has logged in
                         $_SESSION['loggedin'] = 1;
                         header('location:index.php');

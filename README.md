@@ -1,4 +1,6 @@
 #CSE 345 Website
+
+### ReadMe was created as a markdown file, to view properly view in the GitHub page
 ## All source code was uploaded to [GitHub](https://github.com/acope/CSE345_website)
 [Source code on GitHub](https://github.com/acope/CSE345_website)
 [OU Website]()
@@ -10,9 +12,9 @@
 - Created All Pages
 
 ##TO-DO :worried:
-- Populate index page with movies and times
+- Populate index page with movies and times using php
 - Work on registration page populating with database
-- Populate movie info page
+- Populate movie info page using php
 - Get registration page working
   - Sign up for movie
   - Remove tickets
