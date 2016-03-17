@@ -21,9 +21,10 @@
 - Austin(Group Leader)
   - index page
   - login page
-- Farron
   - account creation page
+- Farron
   - confirmation page
+  - SQL Database
 - Brandon
   - reservation page
   - movie info page
