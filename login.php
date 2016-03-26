@@ -70,7 +70,6 @@
             <input type="submit" class="button" title="Log In" name="login" value="Login"></input>
         </div>
     </form>
-    
 
         <div class="reminder">
             <p>Not a member? <a href="#">Sign up now</a></p>

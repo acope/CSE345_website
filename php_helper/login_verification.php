@@ -1,4 +1,6 @@
 <?php
+    $_SESSION['validate_credentials']=0;
+
     if (isset($_POST['login']))
     {
         $useremail = mysqli_real_escape_string($conn, $_POST['email']);
@@ -13,11 +15,13 @@
             $_SESSION['user_name']=$row['USER_FNAME'];
             // loggedin will be used to see if the user has logged in
             $_SESSION['loggedin'] = 1;
+            $_SESSION['validate_credentials']=0; //user has inputted correct credentials
             header('location:index.php');
 
         }
         else 
         {
+            $_SESSION['validate_credentials']=1; //user has inputted wrong credentials
             echo 'Invalid Username and/or Password';
         }
     }//end if
