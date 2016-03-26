@@ -39,26 +39,8 @@
                     <div class="col-lg-6 text-left">
                         <h1>Movie Information</h1>
                     </div>
-                    <div class="col-lg-6 text-right">
-                        
-                        <!--<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>-->
-                        <!--
-                        <?php
-                            // Test to see if the loggedin variable has been made
-                            // If not it creates it and sets it to 0 (Not logged in)
-                            if(isset($_SESSION['loggedin'])){
-                                // NOTE: dont know if this statement is redundant, who cares it works fix later! :)
-                                if($_SESSION['loggedin'] != 1){
-                                    echo( '<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>');
-                                }else{
-                                    echo("Welcome ".$_SESSION['user_name']." ".'<a  href="logout.php" target="_self"> <h3>LOGOUT</h3> </a>');
-                                }
-                            }else{
-                                
-                                $_SESSION['loggedin'] = 0;
-                                echo( '<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>');
-                            }
-                        ?>-->
+                    <div class="col-lg-6 text-right">                  
+                        <?php include 'php_helper/login_button.php' ?>
                     </div>
                 </div>
             </div>
