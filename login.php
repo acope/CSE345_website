@@ -13,7 +13,7 @@
     <meta name="description" content="Login Page">
     <meta name="author" content="Austin Copeman">
 
-    <title>AFB Theaters</title>
+    <title>Login</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -21,6 +21,7 @@
     <!-- Custom CSS -->
     <!-- <link href="css/grayscale.css" rel="stylesheet"> -->
     <link href="css/movie.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -53,12 +54,11 @@
     <!--The boarders are for looks only right now, we can change them or get rid of them-->
     <!-- TODO create PHP for login, search for user and login or display user not found-->
 <div class="form-wrapper">
-
     <form action="#" method="post">
         <h3>Login here</h3>
 
         <div class="form-item">
-            <input type="text" name="user" required="required" placeholder="Username" autofocus required></input>
+            <input type="text" name="email" required="required" placeholder="Email" autofocus required></input>
         </div>
 
         <div class="form-item">
@@ -74,17 +74,16 @@
 
         if (isset($_POST['login']))
         {
-                $username = mysqli_real_escape_string($conn, $_POST['user']);
+                $useremail = mysqli_real_escape_string($conn, $_POST['email']);
                 $password = mysqli_real_escape_string($conn, $_POST['pass']);
 
-                $query = mysqli_query($conn, "SELECT * FROM USER_ACCOUNT WHERE  USER_PASSENCRYPT='$password' and USER_USERNAME='$username'");
+                $query = mysqli_query($conn, "SELECT * FROM USER_ACCOUNT WHERE  USER_PASSENCRYPT='$password' and USER_EMAIL='$useremail'");
                 $row = mysqli_fetch_array($query);
                 $num_row = mysqli_num_rows($query);
 
                 if ($num_row > 0) 
                 {			
                         $_SESSION['user_name']=$row['USER_FNAME'];
-                        $_SESSION['user_id']=$row['USER_ACCOUNT_ID'];
                         // loggedin will be used to see if the user has logged in
                         $_SESSION['loggedin'] = 1;
                         header('location:index.php');
