@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    require_once('php_helper/opendb.php');
+    require_once('php_helper/opendb.php');;
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +121,7 @@
   </table>
 </div>
  
-    
+    <?php require 'php_helper/movie_times_table.php'; ?>
     
     
     
