@@ -8,14 +8,13 @@
     $bourneIdentity = 'The Bourne Identity';
     $planetOfTheApes = 'Dawn of the Planet of the Apes';
     $movieCount = 0;
-    $temp = 0;
+    $temp =0;
     
     $darkKnightTimes = array();
     $everestTimes = array();
     $interstellarTimes = array();
     $bourneIdentityTimes = array();
     $planetOfTheApesTimes = array();
-    $temp = array("a","b","c","d");
 
     $sql = "SELECT MOVIE_NAME, TIME_START
             FROM
@@ -49,24 +48,74 @@
         $movieCount++;
     }
 
-    
+    var_dump($everestTimes);
+    echo "</br>";
+    var_dump($interstellarTimes);
+    echo "</br>";
+    var_dump($bourneIdentityTimes);
+    echo "</br>";
+    var_dump($planetOfTheApesTimes);
     echo "<table class='table table-bordered'>";
     echo "<thead>";
-    echo "<tr><th>Now Playing</th><th>Times</th></tr>";
+    echo "<tr>
+            <th>Now Playing</th><th>Times</th>
+          </tr>";
     echo "</thread>";
-    //The Dark Knight
-    echo "<td><a  href='movieInfo.php' target='_self'> The Dark Knight </a></td>";
-        var_dump($darkKnightTimes);   
-        # TO_DO Populate now playing with array
+
     echo "<tbody>";
+    //The Dark Knight
+    echo "<tr>";
+    echo "<td><a  href='movieInfo.php' target='_self' name='DarkKnightMovie'> The Dark Knight </a></td>";
+    echo "<td>";
+    for($i=0; $i<count($darkKnightTimes); $i++){
+        echo "<a  href='Reservation.php' target='_self' name='DarkKnightMovie$i''> $darkKnightTimes[$i] </a>";
+    }
+    echo "</td>";
+    echo"</tr>";
+
+    //Everest
+    echo "<tr>";
+    echo "<td><a  href='movieInfo.php' target='_self' name='everestMovie'> Everest </a></td>";
+    echo "<td>";
+    for($i=0; $i<count($everestTimes); $i++){
+        echo "<a  href='Reservation.php' target='_self' name='everestMovie$i''> $everestTimes[$i] </a>";
+    }
+    echo "</td>";
+    echo"</tr>";
+
+    //Interstellar
+    echo "<tr>";
+    echo "<td><a  href='movieInfo.php' target='_self' name='interstellarMovie'> Interstellar </a></td>";
+    echo "<td>";
+    for($i=0; $i<count($interstellar); $i++){
+        echo "<a  href='Reservation.php' target='_self' name='interstellarMovie$i''> $interstellarTimes[$i] </a>";
+    }
+    echo "</td>";
+    echo"</tr>";
+    
+    //The Bourne Identity
+    echo "<tr>";
+    echo "<td><a  href='movieInfo.php' target='_self' name='bourneIdentityMovie'> The Bourne Identity </a></td>";
+    echo "<td>";
+    for($i=0; $i<count($bourneIdentity); $i++){
+        echo "<a  href='Reservation.php' target='_self' name='bourneIdentityMovie$i''> $bourneIdentityTimes[$i] </a>";
+    }
+    echo "</td>";
+    echo"</tr>";
+
+    //Dawn of the Planet of the Apes
+    echo "<tr>";
+    echo "<td><a  href='movieInfo.php' target='_self' name='planetOfTheApesMovie'> Dawn of the Planet of the Apes </a></td>";
+    echo "<td>";
+    for($i=0; $i<count($planetOfTheApes); $i++){
+        echo "<a  href='Reservation.php' target='_self' name='planetOfTheApesMovie$i''> $planetOfTheApesTimes[$i] </a>";
+    }
+    echo "</td>";
+    echo"</tr>";
+        # TO_DO Populate now playing with array
+    
 
 
-        
-        /*
-        if($movieName == $darkKnight){
-            array_push($darkKnightTimes, $movieTimeStart);
-        }
-        */
         
    
 
