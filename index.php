@@ -86,52 +86,11 @@
         </div>
     </section>
     
-    
-
-    
-    
-    
+   
 <div class="container">
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Now Playing</th>
-        <th>Times</th>
-       
-      </tr>
-    </thead>
-      
-    <tbody>
-      <tr>
-        <td><a  href="movieInfo.php" target="_self"> The Dark Knight </a></td>
-        <td><a  href="Reservation.php" target="_self"> 4:00 p.m.</a> </td>
-        
-      </tr>
-      <tr>
-        <td><a  href="#" target="_self"> Interstellar </a></td>
-        <td><a  href="#" target="_self"> 7:00 p.m.</a></td>
-        
-      </tr>
-      <tr>
-        <td><a  href="#" target="_self"> Dawn of the Planet of the Apes </a></td>
-        <td><a  href="#" target="_self"> 10:00 p.m.</a></td>
-        
-      </tr>
-    </tbody>
-  </table>
+    <?php require 'php_helper/movie_times_table.php'; ?>
 </div>
- 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
