@@ -86,26 +86,11 @@
         </div>
     </section>
     
-    
-
-    
-    
-    
+   
 <div class="container">
     <?php require 'php_helper/movie_times_table.php'; ?>
 </div>
- 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
