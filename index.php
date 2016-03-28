@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    require_once('php_helper/opendb.php');;
+    require_once('php_helper/opendb.php');
 ?>
 
 <!DOCTYPE html>
