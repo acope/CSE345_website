@@ -40,11 +40,11 @@ CREATE TABLE `movie` (
 -- Dumping data for table `movie`
 --
 
-
+LOCK TABLES `movie` WRITE;
 /*!40000 ALTER TABLE `movie` DISABLE KEYS */;
 INSERT INTO `movie` VALUES (1,'Everest','Baltasar Kormákur',' Jason Clarke','PG-13','A climbing expedition on Mt. Everest is devastated by a severe snow storm.',2015,120,'<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dOHS-mxn0RQ\" frameborder=\"0\" allowfullscreen></iframe>'),(2,'Dawn of the Planet of the Apes','Matt Reeves',' Gary Oldman','PG-13','A growing nation of genetically evolved apes led by Caesar is threatened by a band of human survivors of the devastating virus unleashed a decade earlier.',2014,130,'<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/EcRIUU_QZiY\" frameborder=\"0\" allowfullscreen></iframe>'),(3,'The Dark Knight','Christopher Nolan',' Christian Bale','PG-13','When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.',2008,150,'<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/EXeTwQWrcwY\" frameborder=\"0\" allowfullscreen></iframe>'),(4,'Interstellar','Christopher Nolan','Matthew McConaughey','PG-13','A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',2014,170,'<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/0vxOhd4qlnA\" frameborder=\"0\" allowfullscreen></iframe>'),(5,'The Bourne Identity',' Doug Liman','Matt Damon','PG-13','A man is picked up by a fishing boat, bullet-riddled and suffering from amnesia, before racing to elude assassins and regain his memory.',2002,120,'<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/FpKaB5dvQ4g\" frameborder=\"0\" allowfullscreen></iframe>');
 /*!40000 ALTER TABLE `movie` ENABLE KEYS */;
-
+UNLOCK TABLES;
 
 --
 -- Table structure for table `movie_times`
@@ -67,11 +67,27 @@ CREATE TABLE `movie_times` (
 -- Dumping data for table `movie_times`
 --
 
-
+LOCK TABLES `movie_times` WRITE;
 /*!40000 ALTER TABLE `movie_times` DISABLE KEYS */;
 INSERT INTO `movie_times` VALUES (1,1),(3,1),(5,1),(2,2),(4,2),(11,3),(12,3),(13,3),(14,3),(15,3),(6,4),(8,4),(10,4),(7,5),(9,5);
 /*!40000 ALTER TABLE `movie_times` ENABLE KEYS */;
+UNLOCK TABLES;
 
+--
+-- Temporary view structure for view `new_view`
+--
+
+DROP TABLE IF EXISTS `new_view`;
+/*!50001 DROP VIEW IF EXISTS `new_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `new_view` AS SELECT 
+ 1 AS `MOVIE_NAME`,
+ 1 AS `MOVIE_ID`,
+ 1 AS `SHOWTIME_ID`,
+ 1 AS `TIME_START`,
+ 1 AS `TIME_END`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `reservation`
@@ -99,10 +115,10 @@ CREATE TABLE `reservation` (
 -- Dumping data for table `reservation`
 --
 
-
+LOCK TABLES `reservation` WRITE;
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
-
+UNLOCK TABLES;
 
 --
 -- Table structure for table `showroom`
@@ -122,11 +138,11 @@ CREATE TABLE `showroom` (
 -- Dumping data for table `showroom`
 --
 
-
+LOCK TABLES `showroom` WRITE;
 /*!40000 ALTER TABLE `showroom` DISABLE KEYS */;
 INSERT INTO `showroom` VALUES (1,'Room 1'),(2,'Room 2'),(3,'Room 3');
 /*!40000 ALTER TABLE `showroom` ENABLE KEYS */;
-
+UNLOCK TABLES;
 
 --
 -- Table structure for table `showtime`
@@ -150,11 +166,11 @@ CREATE TABLE `showtime` (
 -- Dumping data for table `showtime`
 --
 
-
+LOCK TABLES `showtime` WRITE;
 /*!40000 ALTER TABLE `showtime` DISABLE KEYS */;
 INSERT INTO `showtime` VALUES (1,1,'10:00:00','13:00:00'),(2,1,'13:00:00','16:00:00'),(3,1,'16:00:00','19:00:00'),(4,1,'19:00:00','22:00:00'),(5,1,'22:00:00','01:00:00'),(6,2,'10:00:00','13:00:00'),(7,2,'13:00:00','16:00:00'),(8,2,'16:00:00','19:00:00'),(9,2,'19:00:00','22:00:00'),(10,2,'22:00:00','01:00:00'),(11,3,'10:00:00','13:00:00'),(12,3,'13:00:00','16:00:00'),(13,3,'16:00:00','19:00:00'),(14,3,'19:00:00','22:00:00'),(15,3,'22:00:00','01:00:00');
 /*!40000 ALTER TABLE `showtime` ENABLE KEYS */;
-
+UNLOCK TABLES;
 
 --
 -- Table structure for table `user_account`
@@ -180,10 +196,28 @@ CREATE TABLE `user_account` (
 -- Dumping data for table `user_account`
 --
 
-
+LOCK TABLES `user_account` WRITE;
 /*!40000 ALTER TABLE `user_account` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user_account` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Final view structure for view `new_view`
+--
+
+/*!50001 DROP VIEW IF EXISTS `new_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `new_view` AS select `t1`.`MOVIE_NAME` AS `MOVIE_NAME`,`t1`.`MOVIE_ID` AS `MOVIE_ID`,`t1`.`SHOWTIME_ID` AS `SHOWTIME_ID`,`t1`.`TIME_START` AS `TIME_START`,`t1`.`TIME_END` AS `TIME_END` from (select `akcopema`.`showtime`.`SHOWTIME_ID` AS `SHOWTIME_ID`,`akcopema`.`movie`.`MOVIE_ID` AS `MOVIE_ID`,`akcopema`.`showtime`.`TIME_START` AS `TIME_START`,`akcopema`.`showtime`.`TIME_END` AS `TIME_END`,`akcopema`.`movie`.`MOVIE_NAME` AS `MOVIE_NAME` from ((`akcopema`.`movie_times` join `akcopema`.`showtime` on((`akcopema`.`movie_times`.`SHOWTIME_ID` = `akcopema`.`showtime`.`SHOWTIME_ID`))) join `akcopema`.`movie` on((`akcopema`.`movie`.`MOVIE_ID` = `akcopema`.`movie_times`.`MOVIE_ID`)))) `t1` where (`t1`.`MOVIE_NAME` = 'The Dark Knight') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -194,4 +228,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-17 11:44:01
+-- Dump completed on 2016-03-29  8:28:58
