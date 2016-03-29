@@ -68,52 +68,53 @@
     echo "</thread>";
 
     echo "<tbody>";
+    
     //The Dark Knight
     echo "<tr>";
-    echo "<td><a  href='movieInfo.php' target='_self' name='DarkKnightMovie'> $darkKnight </a></td>";
+    echo "<td><a  href='movieInfo.php?name=darkKnightMovie' target='_self'> $darkKnight </a></td>";
     echo "<td>";
     for($i=0; $i<count($darkKnightTimes); $i++){
-        echo "<a  href='Reservation.php' target='_self' name='DarkKnightMovie$darkKnightTimes[$i]'> $darkKnightTimes[$i] </a>";
+        echo "<a  href='Reservation.php?name=DarkKnightMovie$darkKnightTimes[$i]' target='_self'> $darkKnightTimes[$i] </a>";
     }
     echo "</td>";
     echo"</tr>";
 
     //Everest
     echo "<tr>";
-    echo "<td><a  href='movieInfo.php' target='_self' name='everestMovie'> $everest </a></td>";
+    echo "<td><a  href='movieInfo.php?name=everestMovie' target='_self'> $everest </a></td>";
     echo "<td>";
     for($i=0; $i<count($everestTimes); $i++){
-        echo "<a  href='Reservation.php' target='_self' name='everestMovie$everestTimes[$i]'> $everestTimes[$i] </a>";
+        echo "<a  href='Reservation.php?name=everestMovie$everestTimes[$i]' target='_self' > $everestTimes[$i] </a>";
     }
     echo "</td>";
     echo"</tr>";
 
     //Interstellar
     echo "<tr>";
-    echo "<td><a  href='movieInfo.php' target='_self' name='interstellarMovie'> $interstellar </a></td>";
+    echo "<td><a  href='movieInfo.php?name=interstellarMovie' target='_self' > $interstellar </a></td>";
     echo "<td>";
     for($i=0; $i<count($interstellarTimes); $i++){
-        echo "<a  href='Reservation.php' target='_self' name='interstellarMovie$interstellarTimes[$i]'> $interstellarTimes[$i] </a>";
+        echo "<a  href='Reservation.phpname=interstellarMovie$interstellarTimes[$i]' target='_self' > $interstellarTimes[$i] </a>";
     }
     echo "</td>";
     echo"</tr>";
     
     //The Bourne Identity
     echo "<tr>";
-    echo "<td><a  href='movieInfo.php' target='_self' name='bourneIdentityMovie'> $bourneIdentity </a></td>";
+    echo "<td><a  href='movieInfo.php?name=bourneIdentityMovie' target='_self' > $bourneIdentity </a></td>";
     echo "<td>";
     for($i=0; $i<count($bourneIdentityTimes); $i++){
-        echo "<a  href='Reservation.php' target='_self' name='bourneIdentityMovie$bourneIdentityTimes[$i]'> $bourneIdentityTimes[$i] </a>";
+        echo "<a  href='Reservation.php?name=bourneIdentityMovie$bourneIdentityTimes[$i]' target='_self' > $bourneIdentityTimes[$i] </a>";
     }
     echo "</td>";
     echo"</tr>";
 
     //Dawn of the Planet of the Apes
     echo "<tr>";
-    echo "<td><a  href='movieInfo.php' target='_self' name='planetOfTheApesMovie'> $planetOfTheApes </a></td>";
+    echo "<td><a  href='movieInfo.php?name=planetOfTheApesMovie' target='_self' > $planetOfTheApes </a></td>";
     echo "<td>";
     for($i=0; $i<count($planetOfTheApesTimes); $i++){
-        echo "<a  href='Reservation.php' target='_self' name='planetOfTheApesMovie$planetOfTheApesTimes[$i]'> $planetOfTheApesTimes[$i] </a>";
+        echo "<a  href='Reservation.php?name=planetOfTheApesMovie$planetOfTheApesTimes[$i]' target='_self'> $planetOfTheApesTimes[$i] </a>";
     }
     echo "</td>";
     echo"</tr>";
@@ -129,8 +130,8 @@
 
     // The following is used for testing purposes only
    // session_unset();
-    print_r($_SESSION);
-    echo"</br>";
+   // print_r($_SESSION);
+    //echo"</br>";
 /*
     var_dump($darkKnight);
     echo "</br>";
