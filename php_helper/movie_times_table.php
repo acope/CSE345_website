@@ -24,6 +24,7 @@
     $result = mysqli_query($conn,$sql) or die(mysql_error());
 
     //Grab movie times for each movie and insert into time array
+    //Create session varaibles for movie names and move ID
     while($row = mysqli_fetch_array($result)){
         $movieName = $row['MOVIE_NAME'];
         $movieTimeStart = $row['TIME_START'];
@@ -32,22 +33,27 @@
         if($movieName == $darkKnight){
             array_push($darkKnightTimes, $movieTimeStart);
             $_SESSION["darkKnightID"] = $movieID;
+            $_SESSION["darkKnightMovie"] = $movieName;
         }
         if($movieName == $everest){
             array_push($everestTimes, $movieTimeStart);
             $_SESSION["everestID"] = $movieID;
+            $_SESSION["everestMovie"] = $movieName;
         }
         if($movieName == $interstellar){
             array_push($interstellarTimes, $movieTimeStart);
             $_SESSION["interstellarID"] = $movieID;
+            $_SESSION["interstellarMovie"] = $movieName;
         }
         if($movieName == $bourneIdentity){
             array_push($bourneIdentityTimes, $movieTimeStart);
             $_SESSION["bourneIdentityID"] = $movieID;
+            $_SESSION["bourneIdentityMovie"] = $movieName;
         }
         if($movieName == $planetOfTheApes){
             array_push($planetOfTheApesTimes, $movieTimeStart);
             $_SESSION["planetOfTheApesID"] = $movieID;
+            $_SESSION["planetOfTheApesMovie"] = $movieName;
         } 
         
         $movieCount++;
@@ -64,7 +70,7 @@
     echo "<tbody>";
     //The Dark Knight
     echo "<tr>";
-    echo "<td><a  href='movieInfo.php' target='_self' name='DarkKnightMovie'> The Dark Knight </a></td>";
+    echo "<td><a  href='movieInfo.php' target='_self' name='DarkKnightMovie'> $darkKnight </a></td>";
     echo "<td>";
     for($i=0; $i<count($darkKnightTimes); $i++){
         echo "<a  href='Reservation.php' target='_self' name='DarkKnightMovie$darkKnightTimes[$i]'> $darkKnightTimes[$i] </a>";
@@ -74,7 +80,7 @@
 
     //Everest
     echo "<tr>";
-    echo "<td><a  href='movieInfo.php' target='_self' name='everestMovie'> Everest </a></td>";
+    echo "<td><a  href='movieInfo.php' target='_self' name='everestMovie'> $everest </a></td>";
     echo "<td>";
     for($i=0; $i<count($everestTimes); $i++){
         echo "<a  href='Reservation.php' target='_self' name='everestMovie$everestTimes[$i]'> $everestTimes[$i] </a>";
@@ -84,7 +90,7 @@
 
     //Interstellar
     echo "<tr>";
-    echo "<td><a  href='movieInfo.php' target='_self' name='interstellarMovie'> Interstellar </a></td>";
+    echo "<td><a  href='movieInfo.php' target='_self' name='interstellarMovie'> $interstellar </a></td>";
     echo "<td>";
     for($i=0; $i<count($interstellarTimes); $i++){
         echo "<a  href='Reservation.php' target='_self' name='interstellarMovie$interstellarTimes[$i]'> $interstellarTimes[$i] </a>";
@@ -94,7 +100,7 @@
     
     //The Bourne Identity
     echo "<tr>";
-    echo "<td><a  href='movieInfo.php' target='_self' name='bourneIdentityMovie'> The Bourne Identity </a></td>";
+    echo "<td><a  href='movieInfo.php' target='_self' name='bourneIdentityMovie'> $bourneIdentity </a></td>";
     echo "<td>";
     for($i=0; $i<count($bourneIdentityTimes); $i++){
         echo "<a  href='Reservation.php' target='_self' name='bourneIdentityMovie$bourneIdentityTimes[$i]'> $bourneIdentityTimes[$i] </a>";
@@ -104,7 +110,7 @@
 
     //Dawn of the Planet of the Apes
     echo "<tr>";
-    echo "<td><a  href='movieInfo.php' target='_self' name='planetOfTheApesMovie'> Dawn of the Planet of the Apes </a></td>";
+    echo "<td><a  href='movieInfo.php' target='_self' name='planetOfTheApesMovie'> $planetOfTheApes </a></td>";
     echo "<td>";
     for($i=0; $i<count($planetOfTheApesTimes); $i++){
         echo "<a  href='Reservation.php' target='_self' name='planetOfTheApesMovie$planetOfTheApesTimes[$i]'> $planetOfTheApesTimes[$i] </a>";
@@ -120,11 +126,12 @@
 
     echo "</tbody>";
     echo "</table>";
-/*
+
     // The following is used for testing purposes only
    // session_unset();
     print_r($_SESSION);
     echo"</br>";
+/*
     var_dump($darkKnight);
     echo "</br>";
     var_dump($darkKnightTimes);
