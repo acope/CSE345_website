@@ -1,4 +1,7 @@
-
+<?php
+session_start();
+include "php_helper/function.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,34 +51,34 @@
     </section>
     
     
-    <!--Main Section-->
-    <!--Main section will include movies and thier times as well as misc things that we can come up with-->
-    <!--The boarders are for looks only right now, we can change them or get rid of them-->
     <section id="main">
-        <div class="container">
-            <div class="row equalHeight">
-                <div class="col-lg-12">
-                    <!--This could be populated using for loops in PHP to keep times and movie next to each other or maybe use a drop down menu -->
-                        <div class="col-lg-4 movie-table">
-                            <p>movie photo</p>
+        <div class="container ">
+            <div class="row ">
+                <div class="col-lg-8">
+                    <div class="equalHeight"> 
+                        <div class="row" style="padding: 10px">
+                            <div class="col-lg-4">
+                                <img width="182" height="268" src="<?php echo getMovieThumbnail($_GET['name']) ?>"  alt="<?php $_GET('name') ?>">                        
+                            </div>           
+                            <div class="col-lg-8">
+                                <iframe width="560" height="268"  src="https://www.youtube.com/embed/EXeTwQWrcwY" frameborder="0" allowfullscreen></iframe>                        
+                            </div>
                         </div>
-                        <div class="col-lg-8 movie-table">
-                            movie trailer
+                        
+                        <div class="row">
+                            <div class = "col-lg-8 movie-table"> 
+                                Movie info
+                            </div>
+                            <div class="col-lg-4 movie-table"> 
+                                Show Times
+                            </div>
                         </div>
-                        <div class = "col-lg-8 movie-table"> 
-                            Movie info
-                        </div>
-                        <div class="col-lg-4 movie-table"> 
-                            Show Times
-                        </div>
+                    </div>
                 </div>
-                
-            </div>  
-        </div>
+            </div>       
+        </div>  
     </section>
-    
-    
-    
+<?php print_r($_GET) ?>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
