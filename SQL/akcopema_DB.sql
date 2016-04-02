@@ -74,6 +74,22 @@ INSERT INTO `movie_times` VALUES (1,1),(3,1),(5,1),(2,2),(4,2),(11,3),(12,3),(13
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `new_view`
+--
+
+DROP TABLE IF EXISTS `new_view`;
+/*!50001 DROP VIEW IF EXISTS `new_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `new_view` AS SELECT 
+ 1 AS `MOVIE_NAME`,
+ 1 AS `MOVIE_ID`,
+ 1 AS `SHOWTIME_ID`,
+ 1 AS `TIME_START`,
+ 1 AS `TIME_END`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `reservation`
 --
 
@@ -185,6 +201,24 @@ LOCK TABLES `user_account` WRITE;
 INSERT INTO `user_account` VALUES ('jdoe@cse345.edu','1234','John','Doe',1234,'Database Street',12345);
 /*!40000 ALTER TABLE `user_account` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Final view structure for view `new_view`
+--
+
+/*!50001 DROP VIEW IF EXISTS `new_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `new_view` AS select `t1`.`MOVIE_NAME` AS `MOVIE_NAME`,`t1`.`MOVIE_ID` AS `MOVIE_ID`,`t1`.`SHOWTIME_ID` AS `SHOWTIME_ID`,`t1`.`TIME_START` AS `TIME_START`,`t1`.`TIME_END` AS `TIME_END` from (select `akcopema`.`showtime`.`SHOWTIME_ID` AS `SHOWTIME_ID`,`akcopema`.`movie`.`MOVIE_ID` AS `MOVIE_ID`,`akcopema`.`showtime`.`TIME_START` AS `TIME_START`,`akcopema`.`showtime`.`TIME_END` AS `TIME_END`,`akcopema`.`movie`.`MOVIE_NAME` AS `MOVIE_NAME` from ((`akcopema`.`movie_times` join `akcopema`.`showtime` on((`akcopema`.`movie_times`.`SHOWTIME_ID` = `akcopema`.`showtime`.`SHOWTIME_ID`))) join `akcopema`.`movie` on((`akcopema`.`movie`.`MOVIE_ID` = `akcopema`.`movie_times`.`MOVIE_ID`)))) `t1` where (`t1`.`MOVIE_NAME` = 'The Dark Knight') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -195,4 +229,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-02 11:50:45
+-- Dump completed on 2016-04-02 11:35:53

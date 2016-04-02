@@ -9,17 +9,23 @@
     $planetOfTheApes = 'Dawn of the Planet of the Apes';
     $movieCount = 0;
 
+    $darkKnightInfo = array();
+    $everestInfo = array();
+    $interstellarInfo = array();
+    $bourneIdentityInfo = array();
+    $planetOfTheApesInfo = array();
+
+
     $darkKnightTimes = array();
     $everestTimes = array();
     $interstellarTimes = array();
     $bourneIdentityTimes = array();
     $planetOfTheApesTimes = array();
 
-    $sql = "SELECT MOVIE_NAME, MOVIE_ID, TIME_START
-            FROM
-            (SELECT SHOWTIME.SHOWTIME_ID, MOVIE.MOVIE_ID, TIME_START, TIME_END, MOVIE_NAME FROM MOVIE_TIMES
-            JOIN SHOWTIME ON MOVIE_TIMES.SHOWTIME_ID=SHOWTIME.SHOWTIME_ID
-            JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
+    $sql = "SELECT * FROM
+(SELECT SHOWTIME.SHOWTIME_ID, MOVIE.MOVIE_ID, MOVIE.MOVIE_NAME, MOVIE.MOVIE_DIRECTOR, MOVIE.MOVIE_LEAD_ACTOR, MOVIE.MOVIE_RATING, MOVIE.MOVIE_DESCRIPTION, MOVIE.MOVIE_YEAR, MOVIE.MOVIE_RUNTIME, MOVIE.MOVIE_YOUTUBE, TIME_START FROM MOVIE_TIMES
+JOIN SHOWTIME ON MOVIE_TIMES.SHOWTIME_ID=SHOWTIME.SHOWTIME_ID
+JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
 
     $result = mysqli_query($conn,$sql) or die(mysql_error());
 
@@ -29,31 +35,39 @@
         $movieName = $row['MOVIE_NAME'];
         $movieTimeStart = $row['TIME_START'];
         $movieID = $row['MOVIE_ID'];
+        $movieDirector = $row['MOVIE_DIRECTOR'];
+        $movieLeadActor = $row['MOVIE_LEAD_ACTOR'];
+        $movieRating = $row['MOVIE_RATING'];
+        $movieDescription = $row['MOVIE_DESCRIPTION'];
+        $movieYear = $row['MOVIE_YEAR'];
+        $movieRuntime = $row['MOVIE_RUNTIME'];
+        $movieYoutubeLink = $row['MOVIE_YOUTUBE'];
         
         if($movieName == $darkKnight){
             array_push($darkKnightTimes, $movieTimeStart);
-            $_SESSION["darkKnightID"] = $movieID;
-            $_SESSION["darkKnightMovie"] = $movieName;
+            array_push($darkKnightInfo, $movieID, $movieName, $movieDirector, $movieLeadActor, $movieRating, $movieDescription, $movieYear, $movieRuntime, $movieYoutubeLink);
+            $_SESSION["darkKnightInfo"] = $darkKnightInfo;
         }
         if($movieName == $everest){
             array_push($everestTimes, $movieTimeStart);
-            $_SESSION["everestID"] = $movieID;
-            $_SESSION["everestMovie"] = $movieName;
+            array_push($everestInfo, $movieID, $movieName, $movieDirector, $movieLeadActor, $movieRating, $movieDescription, $movieYear, $movieRuntime, $movieYoutubeLink);
+            $_SESSION["everestInfo"] = $everestInfo;
+
         }
         if($movieName == $interstellar){
             array_push($interstellarTimes, $movieTimeStart);
-            $_SESSION["interstellarID"] = $movieID;
-            $_SESSION["interstellarMovie"] = $movieName;
+            array_push($interstellarInfo, $movieID, $movieName, $movieDirector, $movieLeadActor, $movieRating, $movieDescription, $movieYear, $movieRuntime, $movieYoutubeLink);
+            $_SESSION["interstellarInfo"] = $interstellarInfo;
         }
         if($movieName == $bourneIdentity){
             array_push($bourneIdentityTimes, $movieTimeStart);
-            $_SESSION["bourneIdentityID"] = $movieID;
-            $_SESSION["bourneIdentityMovie"] = $movieName;
+            array_push($bourneIdentityInfo, $movieID, $movieName, $movieDirector, $movieLeadActor, $movieRating, $movieDescription, $movieYear, $movieRuntime, $movieYoutubeLink);
+            $_SESSION["bourneIdentityInfo"] = $bourneIdentityInfo;
         }
         if($movieName == $planetOfTheApes){
             array_push($planetOfTheApesTimes, $movieTimeStart);
-            $_SESSION["planetOfTheApesID"] = $movieID;
-            $_SESSION["planetOfTheApesMovie"] = $movieName;
+            array_push($planetOfTheApesInfo, $movieID, $movieName, $movieDirector, $movieLeadActor, $movieRating, $movieDescription, $movieYear, $movieRuntime, $movieYoutubeLink);
+            $_SESSION["planetOfTheApesInfo"] = $planetOfTheApesInfo;
         } 
         
         $movieCount++;

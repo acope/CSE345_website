@@ -58,7 +58,7 @@ include "php_helper/function.php";
                     <div class="equalHeight"> 
                         <div class="row" style="padding: 10px">
                             <div class="col-lg-4">
-                                <img width="182" height="268" src="<?php echo getMovieThumbnail($_GET['name']) ?>"  alt="<?php $_GET('name') ?>">                        
+                                <img width="182" height="268" src="<?php echo getMovieThumbnail($_GET['name']) ?>">                        
                             </div>           
                             <div class="col-lg-8">
                                 <iframe width="560" height="268"  src="https://www.youtube.com/embed/EXeTwQWrcwY" frameborder="0" allowfullscreen></iframe>                        
@@ -78,7 +78,7 @@ include "php_helper/function.php";
             </div>       
         </div>  
     </section>
-<?php print_r($_GET) ?>
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
