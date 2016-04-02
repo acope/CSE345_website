@@ -88,7 +88,7 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
     echo "<td><a  href='movieInfo.php?name=darkKnightMovie' target='_self'> $darkKnight </a></td>";
     echo "<td>";
     for($i=0; $i<count($darkKnightTimes); $i++){
-        echo "<a  href='Reservation.php?name=DarkKnightMovie id=$darkKnightTimes[$i]' target='_self'> $darkKnightTimes[$i] </a>";
+        echo "<a  href='Reservation.php?name=darkKnightMovie id=$darkKnightTimes[$i]' target='_self'> $darkKnightTimes[$i] </a>";
     }
     echo "</td>";
     echo"</tr>";
