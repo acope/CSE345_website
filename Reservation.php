@@ -1,10 +1,10 @@
-<?php 
-    session_start();
-    require_once('php_helper/opendb.php');
+<?php
+session_start();
+include "php_helper/function.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
 
@@ -62,7 +62,7 @@
                         
                          
                         <div class="col-lg-4">
-                            <img width="182" height="268" src = "http://ia.media-imdb.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX640_SY720_.jpg" alt="The Dark Knight">
+                            <img width="182" height="268" src="<?php echo getMovieThumbnail($_GET['name']) ?>" >
                              
                         </div>
                         
@@ -77,7 +77,7 @@
             </div>  
         
     </section>
-
+<?php print_r($_GET) ?>
     <section id= "Ticket_count">
    <form>
         <div class="container">
@@ -94,10 +94,7 @@
         </select>
         </div> 
           </div>
-      <!-- <div class="col-lg-2">
-    <label for="Ticket_input">Ticket Quanity</label>
-    <input type="Tickets" class="form-control" id="Ticket_input" placeholder="0">
-  </div> -->
+    
             </div>   
       </div>
        </div>
@@ -121,22 +118,7 @@
 
        </section>
     </form>
-   <!--  <setion id = "Ticket_Order">
-   
-        <div class = "container">
-       
-        <div class = "row equalHeight">
-       <div class="col-lg-8">  
-            <div class = "col-lg-8 movie-table">
-           <p> Ticket Order and quantity </p>
-            
-            </div>
-         </div>
-        </div>
-        
-        </div>
-    </setion>-->
-    
+
     
    
      <script>
