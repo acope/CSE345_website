@@ -59,16 +59,12 @@ include "php_helper/function.php";
                 <div class="col-lg-8">
                     <!--This could be populated using for loops in PHP to keep times and movie next to each other or maybe use a drop down menu -->
                     <div class="equalHeight">
-                        
-                         
-                        <div class="col-lg-4">
-                            <img width="182" height="268" src="<?php echo getMovieThumbnail($_GET['name']) ?>" >
-                             
-                        </div>
-                        
-                        <div class="col-lg-8">
-                            <iframe width="560" height="268"  src="https://www.youtube.com/embed/EXeTwQWrcwY" frameborder="0" allowfullscreen></iframe>
-                           
+                            <div class="col-lg-4">
+                                <img width="182" height="268" src="<?php echo getMovieThumbnail($_GET['name']) ?>">                        
+                            </div>           
+                            <div class="col-lg-8">
+                                <iframe width="560" height="268"  src="https://www.youtube.com/embed/EXeTwQWrcwY" frameborder="0" allowfullscreen></iframe>                        
+                            </div>
                         </div>
                         </div>
                     </div>
@@ -77,7 +73,8 @@ include "php_helper/function.php";
             </div>  
         
     </section>
-<?php print_r($_GET) ?>
+
+<?php $_GET['id']; print_r($_GET) ?>
     <section id= "Ticket_count">
    <form>
         <div class="container">
