@@ -88,7 +88,7 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
     echo "<td><a  href='movieInfo.php?name=darkKnightMovie' target='_self'> $darkKnight </a></td>";
     echo "<td>";
     for($i=0; $i<count($darkKnightTimes); $i++){
-        echo "<a  href='Reservation.php?name=darkKnightMovie id=$darkKnightTimes[$i]' target='_self'> $darkKnightTimes[$i] </a>";
+        echo "<a  href='Reservation.php?name=darkKnightMovie&id=$darkKnightTimes[$i]' target='_self'> $darkKnightTimes[$i] </a>";
     }
     echo "</td>";
     echo"</tr>";
@@ -98,7 +98,7 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
     echo "<td><a  href='movieInfo.php?name=everestMovie' target='_self'> $everest </a></td>";
     echo "<td>";
     for($i=0; $i<count($everestTimes); $i++){
-        echo "<a  href='Reservation.php?name=everestMovie id=$everestTimes[$i]' target='_self' > $everestTimes[$i] </a>";
+        echo "<a  href='Reservation.php?name=everestMovie&id=$everestTimes[$i]' target='_self' > $everestTimes[$i] </a>";
     }
     echo "</td>";
     echo"</tr>";
@@ -108,7 +108,7 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
     echo "<td><a  href='movieInfo.php?name=interstellarMovie' target='_self' > $interstellar </a></td>";
     echo "<td>";
     for($i=0; $i<count($interstellarTimes); $i++){
-        echo "<a  href='Reservation.phpname=interstellarMovie id=$interstellarTimes[$i]' target='_self' > $interstellarTimes[$i] </a>";
+        echo "<a  href='Reservation.phpname=interstellarMovie&id=$interstellarTimes[$i]' target='_self' > $interstellarTimes[$i] </a>";
     }
     echo "</td>";
     echo"</tr>";
@@ -118,7 +118,7 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
     echo "<td><a  href='movieInfo.php?name=bourneIdentityMovie' target='_self' > $bourneIdentity </a></td>";
     echo "<td>";
     for($i=0; $i<count($bourneIdentityTimes); $i++){
-        echo "<a  href='Reservation.php?name=bourneIdentityMovie id=$bourneIdentityTimes[$i]' target='_self' > $bourneIdentityTimes[$i] </a>";
+        echo "<a  href='Reservation.php?name=bourneIdentityMovie&id=$bourneIdentityTimes[$i]' target='_self' > $bourneIdentityTimes[$i] </a>";
     }
     echo "</td>";
     echo"</tr>";
@@ -128,7 +128,7 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
     echo "<td><a  href='movieInfo.php?name=planetOfTheApesMovie' target='_self' > $planetOfTheApes </a></td>";
     echo "<td>";
     for($i=0; $i<count($planetOfTheApesTimes); $i++){
-        echo "<a  href='Reservation.php?name=planetOfTheApesMovie id=$planetOfTheApesTimes[$i]' target='_self'> $planetOfTheApesTimes[$i] </a>";
+        echo "<a  href='Reservation.php?name=planetOfTheApesMovie&id=$planetOfTheApesTimes[$i]' target='_self'> $planetOfTheApesTimes[$i] </a>";
     }
     echo "</td>";
     echo"</tr>";
