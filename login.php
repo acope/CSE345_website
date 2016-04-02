@@ -1,5 +1,6 @@
 <?php session_start(); ?>
-<?php require_once'php_helper/opendb.php';?>
+<?php require_once 'php_helper/opendb.php';?>
+<?php require_once 'php_helper/login_verification.php';?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +14,7 @@
     <meta name="description" content="Login Page">
     <meta name="author" content="Austin Copeman">
 
-    <title>AFB Theaters</title>
+    <title>Login</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -58,7 +59,7 @@
         <h3>Login here</h3>
 
         <div class="form-item">
-            <input type="text" name="user" required="required" placeholder="Username" autofocus required></input>
+            <input type="text" name="email" required="required" placeholder="Email" autofocus required></input>
         </div>
 
         <div class="form-item">
@@ -69,33 +70,7 @@
             <input type="submit" class="button" title="Log In" name="login" value="Login"></input>
         </div>
     </form>
-    
-    <?php
 
-        if (isset($_POST['login']))
-        {
-                $username = mysqli_real_escape_string($conn, $_POST['user']);
-                $password = mysqli_real_escape_string($conn, $_POST['pass']);
-
-                $query = mysqli_query($conn, "SELECT * FROM USER_ACCOUNT WHERE  USER_PASSENCRYPT='$password' and USER_USERNAME='$username'");
-                $row = mysqli_fetch_array($query);
-                $num_row = mysqli_num_rows($query);
-
-                if ($num_row > 0) 
-                {			
-                        $_SESSION['user_name']=$row['USER_FNAME'];
-                        $_SESSION['user_id']=$row['USER_ACCOUNT_ID'];
-                        // loggedin will be used to see if the user has logged in
-                        $_SESSION['loggedin'] = 1;
-                        header('location:index.php');
-
-                }
-                else 
-                {
-                        echo 'Invalid Username and/or Password';
-                }
-        }//end if
-    ?>
         <div class="reminder">
             <p>Not a member? <a href="#">Sign up now</a></p>
         </div>

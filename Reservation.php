@@ -41,23 +41,7 @@
                         <h1> AFB Theaters: Reservation Page</h1>
                     </div>
                     <div class="col-lg-6 text-right">
-                        <!--<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>-->
-                        <?php
-                            // Test to see if the loggedin variable has been made
-                            // If not it creates it and sets it to 0 (Not logged in)
-                            if(isset($_SESSION['loggedin'])){
-                                // NOTE: dont know if this statement is redundant, who cares it works fix later! :)
-                                if($_SESSION['loggedin'] != 1){
-                                    echo( '<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>');
-                                }else{
-                                    echo("Welcome ".$_SESSION['user_name']." ".'<a  href="logout.php" target="_self"> <h3>LOGOUT</h3> </a>');
-                                }
-                            }else{
-                                
-                                $_SESSION['loggedin'] = 0;
-                                echo( '<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>');
-                            }
-                        ?>
+                       <?php include 'php_helper/login_button.php' ?>
                     </div>
                 </div>
             </div>
@@ -71,19 +55,19 @@
     
     <section id="main">
         <div class="container">
-            <div class="row equalHeight">
+            <div class="row ">
                 <div class="col-lg-8">
                     <!--This could be populated using for loops in PHP to keep times and movie next to each other or maybe use a drop down menu -->
                     <div class="equalHeight">
                         
                          
-                        <div class="col-lg-4 movie-table">
-                            <img src = "/img/movie_pics/Dark_Knight.jpg" class="img-responsive" alt="Responsive image">
+                        <div class="col-lg-4">
+                            <img width="182" height="268" src = "http://ia.media-imdb.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX640_SY720_.jpg" alt="The Dark Knight">
                              
                         </div>
                         
-                        <div class="col-lg-8 movie-table">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/EXeTwQWrcwY" frameborder="0" allowfullscreen></iframe>
+                        <div class="col-lg-8">
+                            <iframe width="560" height="268"  src="https://www.youtube.com/embed/EXeTwQWrcwY" frameborder="0" allowfullscreen></iframe>
                            
                         </div>
                         </div>

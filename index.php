@@ -56,22 +56,7 @@
                     </div>
                     <div class="col-lg-6 text-right">
                         <!--<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>-->
-                        <?php
-                            // Test to see if the loggedin variable has been made
-                            // If not it creates it and sets it to 0 (Not logged in)
-                            if(isset($_SESSION['loggedin'])){
-                                // NOTE: dont know if this statement is redundant, who cares it works fix later! :)
-                                if($_SESSION['loggedin'] != 1){
-                                    echo( '<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>');
-                                }else{
-                                    echo("Welcome ".$_SESSION['user_name']." ".'<a  href="logout.php" target="_self"> <h3>LOGOUT</h3> </a>');
-                                }
-                            }else{
-                                
-                                $_SESSION['loggedin'] = 0;
-                                echo( '<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>');
-                            }
-                        ?>
+                        <?php include 'php_helper/login_button.php' ?>
                     </div>
                 </div>
             </div>
@@ -87,13 +72,13 @@
                     <!--Start of Carousel-->
                         <div class="wrapper-with-margin" style="padding: 10px">
                             <div id="projects-carousel" class="owl-carousel owl-theme">
-                                <div class="item"><a><img class="lazyOwl" data-src="/img/movie_banner/Superman_vs_Batman-178752.jpg" alt="Superman vs Batman"></a></div>             
+                                <div class="item"><a><img class="lazyOwl" data-src="http://www.filmsxpress.com/images/Carousel/143/Superman_vs_Batman-178752.jpg" alt="Superman vs Batman"></a></div>
 
-                                <div class="item"><a><img class="lazyOwl" data-src="/img/movie_banner/Ultimate_Captain_America_Marathon-228560.png" alt="Captain America"></a></div>             
+                                <div class="item"><a><img class="lazyOwl" data-src="http://www.filmsxpress.com/images/Carousel/143/Ultimate_Captain_America_Marathon-228560.png" alt="Captain America"></a></div>             
 
-                                <div class="item"><a><img class="lazyOwl" data-src="/img/movie_banner/Divergent_Series_Allegiant-178922.jpg" alt="Divergent"></a></div>             
+                                <div class="item"><a><img class="lazyOwl" data-src="http://www.filmsxpress.com/images/Carousel/143/Divergent_Series_Allegiant-178922.jpg" alt="Divergent"></a></div>             
 
-                                <div class="item"><a><img class="lazyOwl" data-src="/img/movie_banner/Captain_America_Civil_War-166377.jpg" alt="Ultimate Captain America"></a></div>             
+                                <div class="item"><a><img class="lazyOwl" data-src="http://www.filmsxpress.com/images/Carousel/143/Captain_America_Civil_War-166377.jpg" alt="Ultimate Captain America"></a></div>              
                             </div>
                         </div>
                 </div>
@@ -101,96 +86,11 @@
         </div>
     </section>
     
-    
-    <!--Main Section-->
-    <!--Main section will include movies and thier times as well as misc things that we can come up with-->
-    <!--The boarders are for looks only right now, we can change them or get rid of them-->
+   
 <div class="container">
-  <h2>Movie Choices</h2>
-  <p>Please select a moive </p>            
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Movie name</th>
-        <th>Times</th>
-       
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a  href="Reservation.php" target="_self"> <m>The Dark Knight</m> </a></td>
-        <td>10:00 a.m.</td>
-        
-      </tr>
-      <tr>
-        <td><a  href="Reservation.php" target="_self"> <m>Interstellar</m> </a></td>
-        <td>3:30 p.m.</td>
-        
-      </tr>
-      <tr>
-        <td><a  href="Reservation.php" target="_self"> <m>Dawn of the Planet of the Apes</m> </a></td>
-        <td>4:00 p.m.</td>
-        
-      </tr>
-    </tbody>
-  </table>
+    <?php require 'php_helper/movie_times_table.php'; ?>
 </div>
-
-<!--</body>
-    <section id="main">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-9">
-                         <a  href="Reservation.php" target="_self"> <m>The Dark Knight</m> </a>
-                    <div class="row">
-                        <div class="col-xs-8 col-sm-6">
-                               <a  href="Reservation.php" target="_self"> <m>Interstellar</m> </a>
-                             <div class="row">
-                        <div class="col-md-8 col-sm-6">
-                             <a  href="Reservation.php" target="_self"> <m>Dawn of the Planet of the Apes</m> </a>
-                                 </div>
-                                </div>
-                        </div>
-                        <div class="col-xs-4 col-sm-6">
-                                Times
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-          <!--  <div class="row equalHeight">
-                <div class="col-md-8"> -->
-                    <!--This could be populated using for loops in PHP to keep times and movie next to each other or maybe use a drop down menu -->
-                  <!--  <div class="equalHeight">                                               
-                        <div class="col-md-3 movie-table">
-                          
-                            
-                            <a  href="Reservation.php" target="_self"> <m>The Dark Knight</m> </a>
-                            <div class="clearfix"></div>
-                                <div class="well span6">
-                                         <a  href="Reservation.php" target="_self"> <m>Interstellar</m> </a>
-                                </div>  
-                            
-                           
-                             <a  href="Reservation.php" target="_self"> <m>Dawn of the Planet of the Apes</m> </a>
-                             <a  href="Reservation.php" target="_self"> <m>Everest</m> </a>
-                             <a  href="Reservation.php" target="_self"> <m>The Bourne Identity</m> </a>
-                            </div>
-                      
-                        <div class="col-md-4 movie-table">
-                            movie time                            
-                        </div>                        
-                    </div>
-                </div>
-                <div class="col-md-4 movie-table" >
-                    <p> update/misc times go here</p>
-                </div>
-            </div> --> 
-        <!--</div>
-    </section>-->
-    
-    
-    
-    
+   
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 

@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="description" content="My personal website">
+    <meta name="description" content="AFB Confirmation page">
     <meta name="author" content="Austin Copeman">
 
     <title>AFB Theaters</title>
@@ -99,32 +99,6 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>
      
-    <!-- OWL js plugin -->
-    <script src="owl-carousel/owl.carousel.js"></script>
-    
-    <!--Projects Carousel JQuery Script-->
-    <script>
-        $(document).ready(function() {
-          $("#projects-carousel").owlCarousel({
-                navigation : false,
-                slideSpeed : 1600,
-                paginationSpeed : 4000,
-                rewindSpeed: 900,
-                singleItem : true,
-                stopOnHover : true,
-                autoPlay: true,
-                lazyLoad: true,
-                transitionStyle : "fade",
-                navigationText: [
-                    "<i class='fa fa-chevron-left fa-fw'></i>",
-                    "<i class='fa fa-chevron-right fa-fw'></i>"
-                ],
-                navigationText : false,
-                loop: true
-          });  
-            
-        });
-    </script>
     
     <script>
         $('.equalHeight').each(function() {
