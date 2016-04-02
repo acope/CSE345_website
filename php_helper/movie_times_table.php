@@ -9,22 +9,17 @@
     $planetOfTheApes = 'Dawn of the Planet of the Apes';
     $movieCount = 0;
 
-    $darkKnightInfo = array();
-    $everestInfo = array();
-    $interstellarInfo = array();
-    $bourneIdentityInfo = array();
-    $planetOfTheApesInfo = array();
-
     $darkKnightTimes = array();
     $everestTimes = array();
     $interstellarTimes = array();
     $bourneIdentityTimes = array();
     $planetOfTheApesTimes = array();
 
-    $sql = "SELECT * FROM
-(SELECT SHOWTIME.SHOWTIME_ID, MOVIE.MOVIE_ID, MOVIE.MOVIE_NAME, MOVIE.MOVIE_DIRECTOR, MOVIE.MOVIE_LEAD_ACTOR, MOVIE.MOVIE_RATING, MOVIE.MOVIE_DESCRIPTION, MOVIE.MOVIE_YEAR, MOVIE.MOVIE_RUNTIME, MOVIE.MOVIE_YOUTUBE, TIME_START FROM MOVIE_TIMES
-JOIN SHOWTIME ON MOVIE_TIMES.SHOWTIME_ID=SHOWTIME.SHOWTIME_ID
-JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
+    $sql = "SELECT MOVIE_NAME, MOVIE_ID, TIME_START
+            FROM
+            (SELECT SHOWTIME.SHOWTIME_ID, MOVIE.MOVIE_ID, TIME_START, TIME_END, MOVIE_NAME FROM MOVIE_TIMES
+            JOIN SHOWTIME ON MOVIE_TIMES.SHOWTIME_ID=SHOWTIME.SHOWTIME_ID
+            JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
 
     $result = mysqli_query($conn,$sql) or die(mysql_error());
 
@@ -32,32 +27,13 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
     //Create session varaibles for movie names and move ID
     while($row = mysqli_fetch_array($result)){
         $movieName = $row['MOVIE_NAME'];
-        $movieDirector = $row['MOVIE_DIRECTOR'];
-        $movieLeadActor = $row['MOVIE_LEAD_ACTOR'];
-        $movieRating = $row['MOVIE_RATING'];
-        $movieDescription = $row['MOVIE_DESCRIPTION'];
-        $movieYear = $row['MOVIE_YEAR'];
-        $movieRuntime = $row['MOVIE_RUNTIME'];
-        $movieYoutubeLink = $row['MOVIE_YOUTUBE'];
         $movieTimeStart = $row['TIME_START'];
         $movieID = $row['MOVIE_ID'];
         
         if($movieName == $darkKnight){
             array_push($darkKnightTimes, $movieTimeStart);
-            
-            array_push($darkKnightInfo, $movieID, $movieName, $movieDirector, $movieLeadActor, $movieRating, $movieDescription, $movieYear, $movieRuntime, $movieYoutubeLink);
-            $_SESSION["darkKnightInfo"] = $darkKnightInfo;
             $_SESSION["darkKnightID"] = $movieID;
             $_SESSION["darkKnightMovie"] = $movieName;
-            $_SESSION["darkKnightDirector"] = $movieDirector;
-            $_SESSION["darkKnightLeadActor"] = $movieLeadActor; 
-            $_SESSION["darkKnightRating"] = $movieRating;             
-            $_SESSION["darkKnightDescription"] = $movieDescription;
-            $_SESSION["darkKnightYear"] = $movieYear;
-            $_SESSION["darkKnightRunTime"] = $movieRuntime;
-            $_SESSION["darkKnightYoutubeLink"] = $movieYoutubeLink; 
-            
-            
         }
         if($movieName == $everest){
             array_push($everestTimes, $movieTimeStart);
@@ -154,7 +130,7 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
 
     // The following is used for testing purposes only
    // session_unset();
-    //print_r($_SESSION);
+   // print_r($_SESSION);
     //echo"</br>";
 /*
     var_dump($darkKnight);
