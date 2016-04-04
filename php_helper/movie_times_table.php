@@ -1,20 +1,7 @@
 <?php
     // This will be the file for populating index movie table 
     require_once 'php_helper/opendb.php';
-
-    $darkKnight = 'The Dark Knight';
-    $everest = 'Everest';
-    $interstellar = 'Interstellar';
-    $bourneIdentity = 'The Bourne Identity';
-    $planetOfTheApes = 'Dawn of the Planet of the Apes';
-    $movieCount = 0;
-
-    $darkKnightInfo = array();
-    $everestInfo = array();
-    $interstellarInfo = array();
-    $bourneIdentityInfo = array();
-    $planetOfTheApesInfo = array();
-
+    require 'php_helper/function.php';
 
     $darkKnightTimes = array();
     $everestTimes = array();
@@ -45,100 +32,97 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
         
         if($movieName == $darkKnight){
             array_push($darkKnightTimes, $movieTimeStart);
-            array_push($darkKnightInfo, $movieID, $movieName, $movieDirector, $movieLeadActor, $movieRating, $movieDescription, $movieYear, $movieRuntime, $movieYoutubeLink);
-            $_SESSION["darkKnightInfo"] = $darkKnightInfo;
         }
         if($movieName == $everest){
             array_push($everestTimes, $movieTimeStart);
-            array_push($everestInfo, $movieID, $movieName, $movieDirector, $movieLeadActor, $movieRating, $movieDescription, $movieYear, $movieRuntime, $movieYoutubeLink);
-            $_SESSION["everestInfo"] = $everestInfo;
-
         }
         if($movieName == $interstellar){
             array_push($interstellarTimes, $movieTimeStart);
-            array_push($interstellarInfo, $movieID, $movieName, $movieDirector, $movieLeadActor, $movieRating, $movieDescription, $movieYear, $movieRuntime, $movieYoutubeLink);
-            $_SESSION["interstellarInfo"] = $interstellarInfo;
         }
         if($movieName == $bourneIdentity){
             array_push($bourneIdentityTimes, $movieTimeStart);
-            array_push($bourneIdentityInfo, $movieID, $movieName, $movieDirector, $movieLeadActor, $movieRating, $movieDescription, $movieYear, $movieRuntime, $movieYoutubeLink);
-            $_SESSION["bourneIdentityInfo"] = $bourneIdentityInfo;
         }
         if($movieName == $planetOfTheApes){
             array_push($planetOfTheApesTimes, $movieTimeStart);
-            array_push($planetOfTheApesInfo, $movieID, $movieName, $movieDirector, $movieLeadActor, $movieRating, $movieDescription, $movieYear, $movieRuntime, $movieYoutubeLink);
-            $_SESSION["planetOfTheApesInfo"] = $planetOfTheApesInfo;
         } 
-        
-        $movieCount++;
     }
-    
+?>
 
-    echo "<table class='table table-bordered'>";
-    echo "<thead>";
-    echo "<tr>
+<table class='table table-bordered'>
+    <thead>
+        <tr>
             <th>Now Playing</th><th>Times</th>
-          </tr>";
-    echo "</thread>";
+        </tr>
+    </thread>
 
-    echo "<tbody>";
+    <tbody>
     
-    //The Dark Knight
-    echo "<tr>";
-    echo "<td><a  href='movieInfo.php?name=darkKnightMovie' target='_self'> $darkKnight </a></td>";
-    echo "<td>";
-    for($i=0; $i<count($darkKnightTimes); $i++){
-        echo "<a  href='Reservation.php?name=darkKnightMovie&id=$darkKnightTimes[$i]' target='_self'> $darkKnightTimes[$i] </a>";
-    }
-    echo "</td>";
-    echo"</tr>";
+       
+    <!-- The Dark Knight -->
+    <tr>
+    <?php     
+        echo "<td><a  href='movieInfo.php?name=$darkKnight' target='_self'> $darkKnight </a></td>";    
+        echo "<td>";
+            for($i=0; $i<count($darkKnightTimes); $i++){
+                echo "<a  href='Reservation.php?name=$darkKnight&id=$darkKnightTimes[$i]' target='_self'> $darkKnightTimes[$i] </a>";
+            }
+        echo "</td>";
+    ?>  
+    </tr>
 
-    //Everest
-    echo "<tr>";
-    echo "<td><a  href='movieInfo.php?name=everestMovie' target='_self'> $everest </a></td>";
-    echo "<td>";
-    for($i=0; $i<count($everestTimes); $i++){
-        echo "<a  href='Reservation.php?name=everestMovie&id=$everestTimes[$i]' target='_self' > $everestTimes[$i] </a>";
-    }
-    echo "</td>";
-    echo"</tr>";
+    <!-- Everest -->
+    <tr>
+    <?php    
+        echo "<td><a  href='movieInfo.php?name=$everest' target='_self'> $everest </a></td>";
+        echo "<td>";
+            for($i=0; $i<count($everestTimes); $i++){
+                echo "<a  href='Reservation.php?name=$everest&id=$everestTimes[$i]' target='_self' > $everestTimes[$i] </a>";
+            }
+        echo "</td>";
+    ?>    
+    </tr>
 
-    //Interstellar
-    echo "<tr>";
-    echo "<td><a  href='movieInfo.php?name=interstellarMovie' target='_self' > $interstellar </a></td>";
-    echo "<td>";
-    for($i=0; $i<count($interstellarTimes); $i++){
-        echo "<a  href='Reservation.phpname=interstellarMovie&id=$interstellarTimes[$i]' target='_self' > $interstellarTimes[$i] </a>";
-    }
-    echo "</td>";
-    echo"</tr>";
+    <!-- Interstellar -->
+    <tr>
+    <?php
+        echo "<td><a  href='movieInfo.php?name=$interstellar' target='_self' > $interstellar </a></td>";
+        echo "<td>";
+            for($i=0; $i<count($interstellarTimes); $i++){
+                echo "<a  href='Reservation.phpname=$interstellar&id=$interstellarTimes[$i]' target='_self' > $interstellarTimes[$i] </a>";
+            }
+        echo "</td>";
+    ?>    
+    </tr>
     
-    //The Bourne Identity
-    echo "<tr>";
-    echo "<td><a  href='movieInfo.php?name=bourneIdentityMovie' target='_self' > $bourneIdentity </a></td>";
-    echo "<td>";
-    for($i=0; $i<count($bourneIdentityTimes); $i++){
-        echo "<a  href='Reservation.php?name=bourneIdentityMovie&id=$bourneIdentityTimes[$i]' target='_self' > $bourneIdentityTimes[$i] </a>";
-    }
-    echo "</td>";
-    echo"</tr>";
+    <!-- The Bourne Identity -->
+    <tr>
+    <?php
+        echo "<td><a  href='movieInfo.php?name=$bourneIdentity' target='_self' > $bourneIdentity </a></td>";
+        echo "<td>";
+            for($i=0; $i<count($bourneIdentityTimes); $i++){
+                echo "<a  href='Reservation.php?name=$bourneIdentity&id=$bourneIdentityTimes[$i]' target='_self' > $bourneIdentityTimes[$i] </a>";
+            }
+        echo "</td>";
+    ?>
+    </tr>
 
-    //Dawn of the Planet of the Apes
-    echo "<tr>";
-    echo "<td><a  href='movieInfo.php?name=planetOfTheApesMovie' target='_self' > $planetOfTheApes </a></td>";
-    echo "<td>";
-    for($i=0; $i<count($planetOfTheApesTimes); $i++){
-        echo "<a  href='Reservation.php?name=planetOfTheApesMovie&id=$planetOfTheApesTimes[$i]' target='_self'> $planetOfTheApesTimes[$i] </a>";
-    }
-    echo "</td>";
-    echo"</tr>";
-        # TO_DO Populate now playing with array
+    <!-- Dawn of the Planet of the Apes -->
+    <tr>
+    <?php    
+        echo "<td><a  href='movieInfo.php?name=$planetOfTheApes' target='_self' > $planetOfTheApes </a></td>";
+        echo "<td>";
+            for($i=0; $i<count($planetOfTheApesTimes); $i++){
+                echo "<a  href='Reservation.php?name=$planetOfTheApes&id=$planetOfTheApesTimes[$i]' target='_self'> $planetOfTheApesTimes[$i] </a>";
+            }
+        echo "</td>";
+    ?>    
+    </tr>
     
 
 
         
    
-
+<?php
     echo "</tbody>";
     echo "</table>";
 
