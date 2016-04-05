@@ -9,6 +9,6 @@
             echo("Welcome ".$_SESSION['user_name']." ".'<a  href="logout.php" target="_self"> <h3>LOGOUT</h3> </a>');
         }
     }else{                            
-        $_SESSION['loggedin'] = 0;
+        //$_SESSION['loggedin'] = 0;
         echo( '<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>');
     }
