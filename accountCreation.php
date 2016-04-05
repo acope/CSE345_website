@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    require_once('php_helper/opendb.php');
+    include "php_helper/function.php";
 ?>
 
 <!-- TODO make sure user is not already logged in -->
@@ -85,8 +85,16 @@
             <input type="text" name="lname" required="required" placeholder="Doe"></input>
         </div>
 
-        <div class="form-item">Address:
-            <input type="text" name="address" required="required" placeholder=""></input>
+        <div class="form-item">Street Number:
+            <input type="number" name="street_num" required="required" placeholder=""></input>
+        </div>
+
+        <div class="form-item">Street:
+            <input type="text" name="street" required="required" placeholder=""></input>
+        </div>
+
+        <div class="form-item">Zip Code:
+            <input type="number" name="zip" required="required" placeholder=""></input>
         </div>
         
         <div class="form-item">Zip:
