@@ -88,6 +88,10 @@
         <div class="form-item">Address:
             <input type="text" name="address" required="required" placeholder=""></input>
         </div>
+        
+        <div class="form-item">Zip:
+            <input type="number" name="address" required="required" placeholder=""></input>
+        </div>
 
         <div class="button-panel">
             <input name="submit" type="submit" value="Submit" ></input>

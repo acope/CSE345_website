@@ -112,7 +112,7 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
             echo "<td><a  href='movieInfo.php?name=$interstellar' target='_self' > $interstellar </a></td>";
             echo "<td>";
                 for($i=0; $i<count($interstellarTimes); $i++){
-                    echo "<a  href='Reservation.phpname=$interstellar&id=$interstellarTimes[$i]' target='_self' > $interstellarTimes[$i] </a>";
+                    echo "<a  href='Reservation.php?name=$interstellar&id=$interstellarTimes[$i]' target='_self' > $interstellarTimes[$i] </a>";
                 }
             echo "</td>";
         //else take them to the log in page then to the reservation page    
@@ -120,7 +120,7 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
             echo "<td><a  href='movieInfo.php?name=$interstellar' target='_self' > $interstellar </a></td>";
             echo "<td>";
                 for($i=0; $i<count($interstellarTimes); $i++){
-                    echo "<a  href='login.phpname=$interstellar&id=$interstellarTimes[$i]' target='_self' > $interstellarTimes[$i] </a>";
+                    echo "<a  href='login.php?name=$interstellar&id=$interstellarTimes[$i]' target='_self' > $interstellarTimes[$i] </a>";
                 }
             echo "</td>"; 
         }
