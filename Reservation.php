@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "php_helper/function.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +75,27 @@ include "php_helper/function.php";
         
     </section>
 
-<?php $_GET['id']; print_r($_GET) ?>
+<?php //$_GET['id']; print_r($_GET) ?>
+<?php //echo $_SERVER['REQUEST_URI']; ?>
+<?php 
+$Get_url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+$Get_Part_url = explode("=", $Get_url);
+echo $Get_Part_url [2];
+
+//$time = explode("=", $_SERVER);
+ //echo $time [0];
+ //echo $time [1];
+
+
+
+//$tst = "";
+//$_GET['id'] = $tst;
+//print_r(explode('=',$tst,2));
+?>
+
+
+
     <section id= "Ticket_count">
    <form>
         <div class="container">
@@ -106,7 +127,21 @@ include "php_helper/function.php";
   <div class="form-group">
       <div class="row">
         <div class="row-lg-8">
-<button type="submit" class="btn btn-default">Reserve tickets</button>
+            <?php
+    // Test to see if the loggedin variable has been made
+    // If not it creates it and sets it to 0 (Not logged in)
+    if(isset($_SESSION['loggedin'])){
+    // NOTE: dont know if this statement is redundant, who cares it works fix later! :)
+        if($_SESSION['loggedin'] != 1){
+            echo( '<button type="submit" class="btn btn-default">Reserve tickets</button>');
+        }else{
+            echo("Welcome ".$_SESSION['user_name']." ".'<a  href="logout.php" target="_self"> <h3>LOGOUT</h3> </a>');
+        }
+    }else{                            
+        $_SESSION['loggedin'] = 0;
+        echo( '<button type="submit" class="btn btn-default">Reserve tickets</button>');
+    } 
+            ?>
           </div>
           
       </div>
