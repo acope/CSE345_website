@@ -65,7 +65,17 @@ function getMovieInformation($movieName){
     return $movieInfo;
 }
 
-function createAccount($email, $password, $fname, $lname, $street_num, $street, $zip){
+function createAccount(){
+    //$email, $password, $fname, $lname, $street_num, $street, $zip
+    
+    $email = 'fneoh@oakland.edu';
+    $password = '1234';
+    $fname = 'Farron';
+    $lname = 'Neoh';
+    $street_num = 1234;
+    $street = 'sdhklsdfjsdkl';
+    $zip = 12345;
+    
     require 'php_helper/opendb.php';
     
     $sql = "SELECT USER_EMAIL FROM akcopema.user_account WHERE USER_EMAIL = '$email';";
