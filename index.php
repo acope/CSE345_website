@@ -56,7 +56,13 @@
                     </div>
                     <div class="col-lg-6 text-right">
                         <!--<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>-->
-                        <?php include 'php_helper/login_button.php' ?>
+                            <?php 
+                                if(isset($_SESSION['loggedin']) == null){
+                                    $_SESSION['loggedin'] = 0; 
+                                }
+                                include 'php_helper/login_button.php'; 
+                               // print_r($_SESSION);
+                            ?>
                     </div>
                 </div>
             </div>
