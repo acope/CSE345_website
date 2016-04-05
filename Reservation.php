@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "php_helper/function.php";
-
+$movieInfo = getMovieInformation($_GET['name']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +64,7 @@ include "php_helper/function.php";
                                 <img width="182" height="268" src="<?php echo getMovieThumbnail($_GET['name']) ?>">                        
                             </div>           
                             <div class="col-lg-8">
-                                <iframe width="560" height="268"  src="https://www.youtube.com/embed/EXeTwQWrcwY" frameborder="0" allowfullscreen></iframe>                        
+                               <?php echo $movieInfo[8] ?>                    
                             </div>
                         </div>
                         </div>
