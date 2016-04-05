@@ -69,7 +69,24 @@ $movieInfo = getMovieInformation($_GET['name']);
                         
                         <div class="row">
                             <div class = "col-lg-8 movie-table"> 
-                                Movie info
+                                <h3><b>Now Playing</b></h3>
+                                <dl class="dl-horizontal">
+                                    <dt>Synopsis</dt>
+                                    <dd> <?php echo $movieInfo[5] ?></dd>
+
+                                    <dt>Running Time</dt>
+                                    <dd> <?php echo $movieInfo[7] ?> minutes</dd>
+                                    
+                                    <dt>Director</dt>
+                                    <dd> <?php echo $movieInfo[2] ?> minutes</dd>
+                                    
+                                    <dt>Lead Actor</dt>
+                                    <dd> <?php echo $movieInfo[3] ?> minutes</dd>
+                                    
+                                    <dt>Rating</dt>
+                                    <dd> <?php echo $movieInfo[4] ?> minutes</dd>
+                                </dl>
+                                
                             </div>
                             <div class="col-lg-4 movie-table"> 
                                 Show Times
