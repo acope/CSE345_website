@@ -72,7 +72,7 @@
     </form>
 
         <div class="reminder">
-            <p>Not a member? <a href="#">Sign up now</a></p>
+            <p>Not a member? <a href="accountCreation.php">Sign up now</a></p>
         </div>
 
 </div>
