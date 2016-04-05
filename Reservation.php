@@ -127,21 +127,8 @@ echo $Get_Part_url [2];
   <div class="form-group">
       <div class="row">
         <div class="row-lg-8">
-            <?php
-    // Test to see if the loggedin variable has been made
-    // If not it creates it and sets it to 0 (Not logged in)
-    if(isset($_SESSION['loggedin'])){
-    // NOTE: dont know if this statement is redundant, who cares it works fix later! :)
-        if($_SESSION['loggedin'] != 1){
-            echo( '<button type="submit" class="btn btn-default">Reserve tickets</button>');
-        }else{
-            echo("Welcome ".$_SESSION['user_name']." ".'<a  href="logout.php" target="_self"> <h3>LOGOUT</h3> </a>');
-        }
-    }else{                            
-        $_SESSION['loggedin'] = 0;
-        echo( '<button type="submit" class="btn btn-default">Reserve tickets</button>');
-    } 
-            ?>
+            <button type="submit" class="btn btn-default">Reserve tickets</button>
+            
           </div>
           
       </div>
