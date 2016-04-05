@@ -64,3 +64,49 @@ function getMovieInformation($movieName){
     
     return $movieInfo;
 }
+
+function createAccount($email, $password, $fname, $lname, $street_num, $street, $zip){
+    require 'php_helper/opendb.php';
+    
+    $sql = "SELECT USER_EMAIL FROM akcopema.user_account WHERE USER_EMAIL = '$email';";
+    
+    //Create search query
+    $result = mysqli_query($conn,$sql) or die(mysql_error());
+    
+    //Grab Associative array
+    $row = mysqli_fetch_array($result,MYSQLI_BOTH);
+        
+    $DBEmails = array($row['USER_EMAIL']);
+    
+    if(count($DBEmails > 0)){
+        return 1;
+    }
+   
+    // Free result set
+    mysqli_free_result($result);   
+    
+    //INSERT ACCOUNT
+    $sql = "INSERT INTO `akcopema`.`user_account`
+            (`USER_EMAIL`,
+            `USER_PASSENCRYPT`,
+            `USER_FNAME`,
+            `USER_LNAME`,
+            `USER_STREETNUM`,
+            `USER_STREET`,
+            `USER_ZIP`)
+            VALUES
+            ('$email',
+            '$password',
+            '$fname',
+            '$lname',
+            '$street_num',
+            '$street',
+            '$zip');";
+    
+    mysqli_query($conn,$sql) or die(mysql_error());
+    
+    //Close connection
+    mysqli_close($conn);
+    
+    return 0;
+}
