@@ -7,6 +7,46 @@ $ticketsRemaining = 20 - $orderedTickets;
 //Retrieve varaibles from url
 $movieTime = $_GET['id']; 
 $movieName = $_GET['name'];
+$email = $_SESSION['user_email'];
+
+//Checks to see if the user has 
+if(isset($_POST['submit'])){
+    require 'php_helper/opendb.php';
+    $sql = "SELECT showtime.showtime_id
+FROM akcopema.showtime 
+JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
+JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
+WHERE TIME_START = '$movieTime[0]'
+AND movie.MOVIE_NAME = '$movieInfo[0]'";
+    
+    $result = mysqli_query($conn,$sql) or die(mysql_error());
+    $row = mysqli_fetch_array($result,MYSQLI_BOTH); 
+    
+    $showtime_id=$row[0];  
+    $dateFmt = date('o').'-'.date('m').'-'.date('d');
+    $ticket_number = $_POST['selectTickets'];
+    
+    $sql2 = "INSERT INTO `akcopema`.`reservation`
+(`USER_EMAIL`,
+`SHOWTIME_ID`,
+`RESERVATION_TICKETNUM`,
+`RESERVATION_CREATION`,
+`RESERVATION_DATE`)
+VALUES
+('$email',
+'$showtime_id',
+'$ticket_number',
+'$dateFmt',
+'$dateFmt');";
+    
+    if(!mysqli_query($conn,$sql2)){
+        echo "Houston... We have a problem... :/";
+    }
+    else{
+        header('location:editReservation.php');
+    }
+}
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,11 +116,6 @@ $movieName = $_GET['name'];
             </div>
         </div>
        
-    <?php
-    if(isset($_POST['submit'])){
-        header('location:editReservation.php');
-    }
-?>
     <form>
         <div class="container">
           <div class="form-group">
@@ -113,7 +148,6 @@ $movieName = $_GET['name'];
             </div>
         </form>
     </div>
-
     
     
      <script>
