@@ -48,7 +48,7 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
     }
 ?>
 
-<table class='table table-bordered'>
+<table class='table table-bordered movie-table'>
     <thead>
         <tr>
             <th>Now Playing</th><th>Times</th>
