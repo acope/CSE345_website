@@ -47,6 +47,10 @@
             {
                 echo "Houston... We have a problem... :/";
             }
+            else
+            {
+                header('location:login.php');
+            }
         }
         
         // Free result set
