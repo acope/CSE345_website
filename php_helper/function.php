@@ -85,12 +85,13 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1 WHERE MOVIE_NAME = '$
         array_push($movieTimes, $row['TIME_START']); 
     }
     
-    return $movieTimes;
     // Free result set
     mysqli_free_result($result);   
     
     //Close connection
     mysqli_close($conn);
+    
+    return $movieTimes;
 }
 
 function createAccount(){
@@ -147,4 +148,26 @@ function createAccount(){
     mysqli_close($conn);
     
     return 0;
+}
+
+
+function getTotalOrderedTickets($movieTime, $movieName){
+    require 'php_helper/opendb.php';
+    
+    $sql = "SELECT SUM(RESERVATION_TICKETNUM) FROM
+(SELECT reservation.RESERVATION_TICKETNUM, movie.MOVIE_NAME, showtime.TIME_START
+FROM akcopema.reservation
+JOIN akcopema.showtime ON reservation.showtime_id = showtime.showtime_id
+JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
+JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID)
+AS T1 WHERE t1.TIME_START = '$movieTime'
+AND t1.MOVIE_NAME = '$movieName'";
+        
+    $result = mysqli_query($conn,$sql) or die(mysql_error());
+    $row = mysqli_fetch_array($result,MYSQLI_BOTH); 
+    // Free result set
+    mysqli_free_result($result);       
+    //Close connection
+    mysqli_close($conn);
+    return $row[0];
 }
