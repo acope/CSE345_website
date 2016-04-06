@@ -13,6 +13,7 @@
         if ($num_row > 0) 
         {			
             $_SESSION['user_name']=$row['USER_FNAME'];
+            $_SESSION['user_email']=$row['USER_EMAIL'];
             // loggedin will be used to see if the user has logged in
             $_SESSION['loggedin'] = 1;
             $_SESSION['validate_credentials']=0; //user has inputted correct credentials
