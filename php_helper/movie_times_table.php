@@ -182,7 +182,7 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
 
     // The following is used for testing purposes only
    // session_unset();
-   print_r($_SESSION);
+  // print_r($_SESSION);
     //echo"</br>";
 /*
     var_dump($darkKnight);

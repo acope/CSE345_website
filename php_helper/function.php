@@ -41,6 +41,8 @@ function getMovieThumbnail($movieName){
 
 /*
 * Grabs all of the movie information depending on the movie name
+*Indexs: [0]=>Movie ID [1]=>MovieName [2]=>Movie Director [3]=>Movie Lead Actor [4]=>Movie Rating 
+*[5]=>Movie Rating [6]=>Movie Description [7]=>Movie Year [8]=>Movie Runtime [9]=>Movie Youtube
 */
 function getMovieInformation($movieName){
     require 'php_helper/opendb.php';
@@ -63,6 +65,32 @@ function getMovieInformation($movieName){
     mysqli_close($conn);
     
     return $movieInfo;
+}
+
+function getMovieTimes($movieName){
+    require 'php_helper/opendb.php';
+    
+    $movieTimes = array();
+    
+    $sql = "SELECT * FROM
+(SELECT SHOWTIME.SHOWTIME_ID, MOVIE.MOVIE_ID, MOVIE.MOVIE_NAME, TIME_START FROM MOVIE_TIMES
+JOIN SHOWTIME ON MOVIE_TIMES.SHOWTIME_ID=SHOWTIME.SHOWTIME_ID
+JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1 WHERE MOVIE_NAME = '$movieName'";
+
+    $result = mysqli_query($conn,$sql) or die(mysql_error());
+
+    //Grab movie times for each movie and insert into time array
+    //Create session varaibles for movie names and move ID
+    while($row = mysqli_fetch_array($result)){
+        array_push($movieTimes, $row['TIME_START']); 
+    }
+    
+    return $movieTimes;
+    // Free result set
+    mysqli_free_result($result);   
+    
+    //Close connection
+    mysqli_close($conn);
 }
 
 function createAccount(){
