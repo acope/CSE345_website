@@ -4,6 +4,7 @@ include "php_helper/function.php";
 
 //Used to retireve the information for the movie
 $movieInfo = getMovieInformation($_GET['name']);
+$movieTimes = getMovieTimes($_GET['name']); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,7 +90,11 @@ $movieInfo = getMovieInformation($_GET['name']);
                                 
                             </div>
                             <div class="col-lg-4 movie-table"> 
-                                Show Times
+                                <?php 
+                                    for($i=0; $i<count($movieTimes); $i++){
+                                        echo "<a  href='Reservation.php?name=$movieInfo[1]&id=$movieTimes[$i]' target='_self' > $movieTimes[$i] </a>";
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
