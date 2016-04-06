@@ -75,7 +75,12 @@ $movieName = $_GET['name'];
                 </div>
             </div>
         </div>
-        
+       
+    <?php
+    if(isset($_POST['submit'])){
+        header('location:editReservation.php');
+    }
+?>
     <form>
         <div class="container">
           <div class="form-group">
@@ -108,11 +113,7 @@ $movieName = $_GET['name'];
             </div>
         </form>
     </div>
-<?php
-    if(isset($_POST['submit'])){
-        echo"hello world";
-    }
-?>
+
     
     
      <script>
