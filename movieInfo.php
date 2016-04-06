@@ -55,7 +55,7 @@ $movieInfo = getMovieInformation($_GET['name']);
     
     <section id="main">
         <div class="container ">
-            <div class="row ">
+            <div class="row">
                 <div class="col-lg-8">
                     <div class="equalHeight"> 
                         <div class="row" style="padding: 10px">
