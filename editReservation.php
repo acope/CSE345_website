@@ -33,26 +33,30 @@
         for($i=0; $i<count($movieName); $i++){
             $quant = $_POST['quantity'.$i];
             
-//            $sql = "UPDATE `akcopema`.`reservation`
-//                SET `RESERVATION_TICKETNUM` = '$quant'
-//                WHERE `RESERVATION_ID` = '$reservationID[$i]'";
-//            
-//            echo $sql;
-//            
-//            if(!mysqli_query($conn,$sql1))
-//            {
-//                echo "Houston... We have a problem... :/";
-//            }
-//            else
-//            {
-//                header('location:editReservation.php');
-//            }
-//            
-//            $sql = NULL;
+            if($quant==="0"){
+                $sql = "DELETE FROM `akcopema`.`reservation`
+                        WHERE RESERVATION_ID='$reservationID[$i]';";
+            }
+            else{
+                $sql = "UPDATE `akcopema`.`reservation`
+                    SET `RESERVATION_TICKETNUM` = '$quant'
+                    WHERE `RESERVATION_ID` = '$reservationID[$i]'";
+            }
+            
+            if(!mysqli_query($conn,$sql))
+            {
+                echo "Update on $movieName[$i] at $movieTime[$i] has failed. No changes were made.";
+            }
+            else
+            {
+                header('location:editReservation.php');
+            }
+            
+            $sql = NULL;
         }
         
          //Close connection
-        //mysqli_close($conn);
+        mysqli_close($conn);
     }
 ?>
 
@@ -122,9 +126,7 @@
         <div class="form-wrapper">  
             <form action="#" method="post"> 
                 <div class="col-lg-12">
-                    <?php require 'php_helper/reservation_table.php';
-                    print_r($_POST);
-                    ?>
+                    <?php require 'php_helper/reservation_table.php';?>
                 </div>
 
             <div class="col-lg-12 col-lg-offset-5">
