@@ -1,8 +1,7 @@
 <?php
     // This will be the file for populating index movie table 
-    require_once 'php_helper/opendb.php';
-    require 'php_helper/function.php';
-
+//    require_once 'php_helper/opendb.php';
+//    require('php_helper/function.php');
 ?>
 
 <table class='table table-bordered movie-table'>
@@ -56,4 +55,3 @@
     var_dump($planetOfTheApesTimes);
     // end of testing
 */
-    require_once('php_helper/closedb.php');

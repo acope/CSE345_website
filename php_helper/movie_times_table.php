@@ -206,4 +206,3 @@ JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1";
     var_dump($planetOfTheApesTimes);
     // end of testing
 */
-    require_once('php_helper/closedb.php');

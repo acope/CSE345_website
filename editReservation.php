@@ -1,6 +1,7 @@
 <?php 
     session_start();
-    require_once('php_helper/opendb.php');
+    require('php_helper/opendb.php');
+    require('php_helper/function.php');
     
     
     $useremail = $_SESSION['user_email'];
@@ -9,6 +10,7 @@
     $movieTime = array();
     $quantity = array();
     $reservationID = array();
+    $error_array = array();
 
     $sql = "SELECT reservation.RESERVATION_ID, user_account.USER_EMAIL, reservation.RESERVATION_TICKETNUM, movie.MOVIE_NAME, showtime.TIME_START
         FROM akcopema.reservation
@@ -30,33 +32,49 @@
     }
 
     if (isset($_POST['submit'])){
-        for($i=0; $i<count($movieName); $i++){
-            $quant = $_POST['quantity'.$i];
+        
+        
+        for($i=0; $i<count($movieName); $i++){            
+            $quant = (int)$_POST['quantity'.$i];
+            $ticketsLeft = (20 - getTotalOrderedTickets($movieTime[$i],$movieName[$i])) + $quantity[$i];
             
-            if($quant==="0"){
-                $sql = "DELETE FROM `akcopema`.`reservation`
+            if($quant <= $ticketsLeft){
+                if($quant===0){
+                    $sql = "DELETE FROM `akcopema`.`reservation`
                         WHERE RESERVATION_ID='$reservationID[$i]';";
+                }
+                else{
+                    $sql = "UPDATE `akcopema`.`reservation`
+                        SET `RESERVATION_TICKETNUM` = '$quant'
+                        WHERE `RESERVATION_ID` = '$reservationID[$i]'";
+                }
+
+                if(!mysqli_query($conn,$sql))
+                {
+                    $error_string = "Update on $movieName[$i] at $movieTime[$i] has failed. Changes were discarded.<br/>\n";
+                    array_push($error_array, $error_string);
+                }
+                else
+                {
+                    //
+                }
             }
             else{
-                $sql = "UPDATE `akcopema`.`reservation`
-                    SET `RESERVATION_TICKETNUM` = '$quant'
-                    WHERE `RESERVATION_ID` = '$reservationID[$i]'";
+                $error_string = "Update on $movieName[$i] at $movieTime[$i] has failed. Number of tickets requested is greater than amount available ($ticketsLeft).<br/>\n";
+                array_push($error_array, $error_string);
             }
-            
-            if(!mysqli_query($conn,$sql))
-            {
-                echo "Update on $movieName[$i] at $movieTime[$i] has failed. No changes were made.";
-            }
-            else
-            {
-                header('location:editReservation.php');
-            }
-            
+
             $sql = NULL;
+                                
         }
         
-         //Close connection
-        mysqli_close($conn);
+        
+        
+        for($j=0; $j<count($error_array); $j++){
+            echo $error_array[$j];
+        }
+        
+        //header('location:editReservation.php');
     }
 ?>
 
