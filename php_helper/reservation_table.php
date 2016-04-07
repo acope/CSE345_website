@@ -33,7 +33,7 @@
 <table class='table table-bordered movie-table'>
     <thead>
         <tr>
-            <th>Movie</th><th>Time</th><th>Quantity</th><th>Delete</th>
+            <th>Movie</th><th>Time</th><th>Quantity</th>
         </tr>
     </thread>
 
@@ -48,8 +48,7 @@
             echo "<tr>";
             echo "<td>$movieName[$i]</td>";
             echo "<td>$movieTime[$i]</td>";
-            echo"<td>$quantity[$i]</td>";
-            echo "<td>Delete</td>";
+            echo '<td><div class="form-item"><input type="number" name="quantity'.$i.'" required="required" value="'.$quantity[$i].'"></input> </div></td>';
             echo "</tr>";
         }
     ?>  

@@ -61,6 +61,9 @@
     
 <div class="container">
     <?php require 'php_helper/reservation_table.php'; ?>
+    <div class="col-lg-12 col-lg-offset-11">
+        <input formmethod="post" type="submit" value="Submit">
+    </div>
 </div>    
     
     
