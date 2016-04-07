@@ -75,13 +75,13 @@
                     <!--Start of Carousel-->
                         <div class="wrapper-with-margin" style="padding: 10px">
                             <div id="projects-carousel" class="owl-carousel owl-theme">
-                                <div class="item"><a><img class="lazyOwl" data-src="http://www.filmsxpress.com/images/Carousel/143/Superman_vs_Batman-178752.jpg" alt="Superman vs Batman"></a></div>
+                                <div class="item"><a><img class="lazyOwl" src="http://www.filmsxpress.com/images/Carousel/143/Superman_vs_Batman-178752.jpg" alt="Superman vs Batman"></a></div>
 
-                                <div class="item"><a><img class="lazyOwl" data-src="http://www.filmsxpress.com/images/Carousel/143/Ultimate_Captain_America_Marathon-228560.png" alt="Captain America"></a></div>             
+                                <div class="item"><a><img class="lazyOwl" src="http://www.filmsxpress.com/images/Carousel/143/Ultimate_Captain_America_Marathon-228560.png" alt="Captain America"></a></div>             
 
-                                <div class="item"><a><img class="lazyOwl" data-src="http://www.filmsxpress.com/images/Carousel/143/Divergent_Series_Allegiant-178922.jpg" alt="Divergent"></a></div>             
+                                <div class="item"><a><img class="lazyOwl" src="http://www.filmsxpress.com/images/Carousel/143/Divergent_Series_Allegiant-178922.jpg" alt="Divergent"></a></div>             
 
-                                <div class="item"><a><img class="lazyOwl" data-src="http://www.filmsxpress.com/images/Carousel/143/Captain_America_Civil_War-166377.jpg" alt="Ultimate Captain America"></a></div>              
+                                <div class="item"><a><img class="lazyOwl" src="http://www.filmsxpress.com/images/Carousel/143/Captain_America_Civil_War-166377.jpg" alt="Ultimate Captain America"></a></div>              
                             </div>
                         </div>
                 </div>
