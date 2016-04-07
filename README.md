@@ -29,7 +29,9 @@
 - Edit Reservation Page
   - Allows a user to view their reservations for each show and showtime
   - Allows a user to edit how many tickets they would like to researve
-
+- Confirmation Page
+ - Gives the user information about what movie and time that they reserved tickets for
+ - Automatically redirects user to edit reservation page or user can click on link
   
   
 - Created All Pages
