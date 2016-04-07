@@ -119,11 +119,14 @@
     </section>
     
 <div class="container">
-    <div class="col-lg-12">
-        <?php require 'php_helper/reservation_table.php';?>
-    </div>
-    <div class="form-wrapper">  
-        <form action="#" method="post">
+        <div class="form-wrapper">  
+            <form action="#" method="post"> 
+                <div class="col-lg-12">
+                    <?php require 'php_helper/reservation_table.php';
+                    print_r($_POST);
+                    ?>
+                </div>
+
             <div class="col-lg-12 col-lg-offset-5">
                 <div class="button-panel">
                     <input name="submit" type="submit" value="Save Changes" formmethod="post">
