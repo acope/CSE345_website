@@ -48,7 +48,7 @@
             echo "<tr>";
             echo "<td>$movieName[$i]</td>";
             echo "<td>$movieTime[$i]</td>";
-            echo '<td><div class="form-item"><input type="text" name="quantity'.$i.'" required="required" value="'.$quantity[$i].'"></input> </div></td>';
+            echo '<td><div class="form-item"><input type="number" name="quantity'.$i.'" required="required" value="'.$quantity[$i].'"></input> </div></td>';
             echo "</tr>";
         }
     ?>  
