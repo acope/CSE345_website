@@ -29,7 +29,7 @@ if(isset($_POST['selectTickets'])){
             VALUES('$email','$showtime_id','$ticket_number','$dateFmt','$dateFmt');";
     
     if (mysqli_query($conn, $sql2)) {
-        header('location:editReservation.php');
+        header("location: confirmation.php?name=".$_GET['name']."&id=".$_GET['id']);
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
@@ -85,7 +85,7 @@ if(isset($_POST['selectTickets'])){
                     <div class="equalHeight"> 
                         <div class="row" style="padding: 10px">
                             <div class="col-lg-4">
-                                <img width="182" height="268" src="<?php echo getMovieThumbnail($_GET['name']) ?>">                        
+                                <img width="229" height="315" src="<?php echo getMovieThumbnail($_GET['name']) ?>">                        
                             </div>           
                             <div class="col-lg-8">
                                 <?php echo $movieInfo[8] ?>

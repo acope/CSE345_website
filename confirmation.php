@@ -14,7 +14,7 @@
     <meta name="description" content="AFB Confirmation page">
     <meta name="author" content="Austin Copeman">
 
-    <title>AFB Theaters</title>
+    <title>Confimation</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@
             <div class="container">
                 <div class="row equalHeight">
                     <div class="col-lg-6 text-left">
-                        <h1> AFB Theaters</h1>
+                        <h1> AFB Theaters: Confirmation</h1>
                     </div>
                 </div>
             </div>
@@ -66,19 +66,19 @@
     <section id="main">
         <div class="container">
             <div class="row equalHeight">
-                <div class="col-md-12">
-                    <!--This could be populated using for loops in PHP to keep times and movie next to each other or maybe use a drop down menu -->
-                    <div class="equalHeight">
-                        <div class="col-md-4 movie-table">
-                            <p>Movie Photo</p>
-                        </div>
-                         <div class="col-md-8 movie-table">
-                            <p>Order Details</p>
-                        </div>
-                    </div>
-                    <div class="col-md-12 movie-table" >
-                        <p>Confirmation Info</p>
-                    </div>
+                <div class="confirmation col-md-12">
+                    <?php 
+                        $url = 'http://' . $_SERVER['HTTP_HOST'];            // Get the server
+                        $url .= rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); // Get the current directory
+                        $url .= '/editReservation.php';            // <-- Your relative path
+                    
+                        echo('<h1>CONGRATS!</h1>');
+                        echo('Your Reservation for '.$_GET['name']. ' at '.$_GET['id'].' has been sucessfully created <br>');
+                        echo('Page should automatically redirect your to your reservations if not click on the link below<br>');
+                        echo('<a  href="'.$url.'" target="_self">CLICK HERE </a>');
+                        //header('Location: ' . $url, true, 302);              // Use either 301 or 302
+                        header( "refresh:5;$url" );
+                    ?>
                 </div>
             </div>  
         </div>

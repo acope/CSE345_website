@@ -89,3 +89,14 @@ a:focus {
     border: 2px solid black;
     background-color: lightslategray;
 }
+
+.confirmation{
+    
+}
+.confirmation a{
+    color : black;
+}
+
+.confirmation a:hover, a:focus{
+    color : red;
+}

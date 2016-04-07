@@ -54,21 +54,20 @@ $movieTimes = getMovieTimes($_GET['name']);
         </div>
     </section>
     
-    <section id="main">
         <div class="container ">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="equalHeight"> 
+                    <div > 
                         <div class="row" style="padding: 10px">
                             <div class="col-lg-4">
-                                <img width="182" height="268" src="<?php echo getMovieThumbnail($_GET['name']) ?>">                        
+                                <img width="229" height="315" src="<?php echo getMovieThumbnail($_GET['name']) ?>">                        
                             </div>           
                             <div class="col-lg-8">
                                 <?php echo $movieInfo[8] ?>
                             </div>
                         </div>
                         
-                        <div class="row">
+                        <div class="row equalHeight" >
                             <div class = "col-lg-8 movie-table"> 
                                 <h3><b>Now Playing</b></h3>
                                 <dl class="dl-horizontal">
@@ -90,6 +89,7 @@ $movieTimes = getMovieTimes($_GET['name']);
                                 
                             </div>
                             <div class="col-lg-4 movie-table"> 
+                                <h3><b>Movie Times</b></h3>
                                 <?php 
                                     for($i=0; $i<count($movieTimes); $i++){
                                         echo "<a  href='Reservation.php?name=$movieInfo[1]&id=$movieTimes[$i]' target='_self' > $movieTimes[$i] </a>";
@@ -101,7 +101,6 @@ $movieTimes = getMovieTimes($_GET['name']);
                 </div>
             </div>       
         </div>  
-    </section>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
