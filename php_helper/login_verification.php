@@ -6,7 +6,7 @@
         $useremail = mysqli_real_escape_string($conn, $_POST['email']);
         $password = mysqli_real_escape_string($conn, $_POST['pass']);
 
-        $query = mysqli_query($conn, "SELECT * FROM USER_ACCOUNT WHERE  USER_PASSENCRYPT='$password' and USER_EMAIL='$useremail'");
+        $query = mysqli_query($conn, "SELECT * FROM user_account WHERE  USER_PASSENCRYPT='$password' and USER_EMAIL='$useremail'");
         $row = mysqli_fetch_array($query);
         $num_row = mysqli_num_rows($query);
 

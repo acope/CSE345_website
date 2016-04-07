@@ -48,7 +48,7 @@ function getMovieInformation($movieName){
     require 'php_helper/opendb.php';
     
     //Grab all of the movies
-    $sql = "SELECT * FROM MOVIE WHERE MOVIE_NAME='$movieName'";
+    $sql = "SELECT * FROM movie WHERE MOVIE_NAME='$movieName'";
     
     //Create search query
     $result = mysqli_query($conn,$sql) or die(mysql_error());
@@ -73,9 +73,9 @@ function getMovieTimes($movieName){
     $movieTimes = array();
     
     $sql = "SELECT * FROM
-(SELECT SHOWTIME.SHOWTIME_ID, MOVIE.MOVIE_ID, MOVIE.MOVIE_NAME, TIME_START FROM MOVIE_TIMES
-JOIN SHOWTIME ON MOVIE_TIMES.SHOWTIME_ID=SHOWTIME.SHOWTIME_ID
-JOIN MOVIE ON MOVIE.MOVIE_ID = MOVIE_TIMES.MOVIE_ID) AS T1 WHERE MOVIE_NAME = '$movieName'";
+(SELECT showtime.SHOWTIME_ID, movie.MOVIE_ID, movie.MOVIE_NAME, TIME_START FROM movie_times
+JOIN showtime ON movie_times.SHOWTIME_ID=showtime.SHOWTIME_ID
+JOIN movie ON movie.MOVIE_ID = movie_times.MOVIE_ID) AS t1 WHERE MOVIE_NAME = '$movieName'";
 
     $result = mysqli_query($conn,$sql) or die(mysql_error());
 
@@ -158,9 +158,9 @@ function getTotalOrderedTickets($movieTime, $movieName){
 (SELECT reservation.RESERVATION_TICKETNUM, movie.MOVIE_NAME, showtime.TIME_START
 FROM akcopema.reservation
 JOIN akcopema.showtime ON reservation.showtime_id = showtime.showtime_id
-JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
-JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID)
-AS T1 WHERE t1.TIME_START = '$movieTime'
+JOIN movie_times ON showtime.showtime_id = movie_times.showtime_id
+JOIN movie on movie_times.movie_id = movie.MOVIE_ID)
+AS t1 WHERE t1.TIME_START = '$movieTime'
 AND t1.MOVIE_NAME = '$movieName'";
         
     $result = mysqli_query($conn,$sql) or die(mysql_error());
@@ -177,8 +177,8 @@ function getMovieID($movieTime, $movieInfo){
     
     $sql = "SELECT showtime.showtime_id
 FROM akcopema.showtime 
-JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
-JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
+JOIN movie_times ON showtime.showtime_id = movie_times.showtime_id
+JOIN movie on movie_times.movie_id = movie.MOVIE_ID
 WHERE TIME_START = '$movieTime[0]'
 AND movie.MOVIE_NAME = '$movieInfo[0]'";
     

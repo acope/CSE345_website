@@ -14,8 +14,8 @@ if(isset($_POST['selectTickets'])){
     
     $sql = "SELECT showtime.showtime_id
             FROM akcopema.showtime 
-            JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
-            JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
+            JOIN movie_times ON showtime.showtime_id = movie_times.showtime_id
+            JOIN movie on movie_times.movie_id = movie.MOVIE_ID
             WHERE TIME_START = '$movieTime'
             AND movie.MOVIE_NAME = '$movieInfo[1]'";
     
