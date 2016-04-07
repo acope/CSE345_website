@@ -31,8 +31,7 @@
         array_push($reservationID, $row['RESERVATION_ID']);
     }
 
-    if (isset($_POST['submit'])){
-        
+    if (isset($_POST['submit'])){        
         
         for($i=0; $i<count($movieName); $i++){            
             $quant = (int)$_POST['quantity'.$i];
@@ -54,10 +53,32 @@
                     $error_string = "Update on $movieName[$i] at $movieTime[$i] has failed. Changes were discarded.<br/>\n";
                     array_push($error_array, $error_string);
                 }
-                else
-                {
-                    //
+                
+                $movieName = array();
+                $movieTime = array();
+                $quantity = array();
+                $reservationID = array();
+                $error_array = array();
+
+                $sql = "SELECT reservation.RESERVATION_ID, user_account.USER_EMAIL, reservation.RESERVATION_TICKETNUM, movie.MOVIE_NAME, showtime.TIME_START
+                    FROM akcopema.reservation
+                    JOIN akcopema.showtime ON reservation.showtime_id = showtime.showtime_id
+                    JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
+                    JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
+                    JOIN USER_ACCOUNT ON user_account.USER_EMAIL = reservation.user_email
+                    WHERE reservation.USER_EMAIL = '$useremail'";
+
+                $result = mysqli_query($conn,$sql) or die(mysql_error());
+
+                //Grab movie times for each movie and insert into time array
+                //Create session varaibles for movie names and move ID
+                while($row = mysqli_fetch_array($result)){
+                    array_push($movieName, $row['MOVIE_NAME']);
+                    array_push($movieTime, $row['TIME_START']);
+                    array_push($quantity, $row['RESERVATION_TICKETNUM']);
+                    array_push($reservationID, $row['RESERVATION_ID']);
                 }
+                header( "editReservation.php" );
             }
             else{
                 $error_string = "Update on $movieName[$i] at $movieTime[$i] has failed. Number of tickets requested is greater than amount available ($ticketsLeft).<br/>\n";
@@ -65,7 +86,7 @@
             }
 
             $sql = NULL;
-                                
+            header( "editReservation.php" );                    
         }
         
         
@@ -74,7 +95,9 @@
             echo $error_array[$j];
         }
         
-        //header('location:editReservation.php');
+        if(count($error_array) > 0){
+            header( "refresh:5;editReservation.php" );
+        }
     }
 ?>
 
