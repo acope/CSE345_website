@@ -64,8 +64,6 @@ if(isset($_POST['selectTickets'])){
     
     </head>
 
-    <!--Banner Section-->
-    <!-- This section will be where the theater name and login will be (on most screens)-->
     <section id="movieBanner" class="banner">
         <div class="banner-body">
             <div class="container">
@@ -80,11 +78,6 @@ if(isset($_POST['selectTickets'])){
             </div>
         </div>
     </section>
-
-   
-     <!--Main Section-->
-    <!--Main section will include movie photo, order details, the name of the moivie, and the time and date. It will also, include the ticket order and quantity.-->
-    <!--The boarders are for looks only right now, we can change them or get rid of them-->
     
         <div class="container">
             <div class="row">
@@ -130,19 +123,6 @@ if(isset($_POST['selectTickets'])){
             </div>
        </div>    
     </form>
-    <!--
-    <div class="container">
-        <form>
-            <div class="form-group">
-                <div class="row">
-                    <div class="row-lg-8">
-                         <button type="submit" name="submit" formmethod="post" class="btn btn-default">Reserve tickets</button> 
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-  -->  
     
      <script>
         $('.equalHeight').each(function() {

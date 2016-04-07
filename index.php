@@ -61,7 +61,6 @@
                                     $_SESSION['loggedin'] = 0; 
                                 }
                                 include 'php_helper/login_button.php'; 
-                               // print_r($_SESSION);
                             ?>
                     </div>
                 </div>

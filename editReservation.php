@@ -54,6 +54,12 @@
                     <div class="col-lg-6 text-left">
                         <h1> AFB Theaters</h1>
                     </div>
+                    <div class="col-lg-6 text-right">
+                        <!--<a  href="login.php" target="_self"> <h3>LOGIN</h3> </a>-->
+                            <?php 
+                                include 'php_helper/login_button.php'; 
+                            ?>
+                    </div>
                 </div>
             </div>
         </div>
