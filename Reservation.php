@@ -8,9 +8,10 @@ $ticketsRemaining = 20 - $orderedTickets;
 $movieTime = $_GET['id']; 
 $movieName = $_GET['name'];
 $email = $_SESSION['user_email'];
-
-//Checks to see if the user has 
-if(isset($_POST['submit'])){
+$_SESSION['movieTime'] = $_GET['id'];
+$_SESSION['movieName'] = $_GET['name'];
+  
+if(isset($_POST['selectTickets'])){
     require 'php_helper/opendb.php';
     $sql = "SELECT showtime.showtime_id
 FROM akcopema.showtime 
@@ -46,7 +47,6 @@ VALUES
         header('location:editReservation.php');
     }
 }
-  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -122,6 +122,7 @@ VALUES
               <div class="row">
                 <div class="col-lg-2">
                   <div class="form-group">
+
                     <label for="sel1">Researve tickets:</label>
                     <select class="form-control" name="selectTickets">
                         <?php
@@ -129,6 +130,7 @@ VALUES
                                 echo "<option value='$i''>$i</option>";
                             }
                         ?>
+                        <input type="submit" formmethod="post" value="Submit">
                     </select>
                  </div> 
                 </div>
@@ -136,19 +138,20 @@ VALUES
             </div>
        </div>    
     </form>
-            
+<?php print_r($_POST);?>
+    <!--
     <div class="container">
         <form>
             <div class="form-group">
                 <div class="row">
                     <div class="row-lg-8">
-                        <button type="submit" name="submit" formmethod="post" class="btn btn-default">Reserve tickets</button>
+                         <button type="submit" name="submit" formmethod="post" class="btn btn-default">Reserve tickets</button> 
                     </div>
                 </div>
             </div>
         </form>
     </div>
-    
+  -->  
     
      <script>
         $('.equalHeight').each(function() {
