@@ -8,43 +8,30 @@ $ticketsRemaining = 20 - $orderedTickets;
 $movieTime = $_GET['id']; 
 $movieName = $_GET['name'];
 $email = $_SESSION['user_email'];
-$_SESSION['movieTime'] = $_GET['id'];
-$_SESSION['movieName'] = $_GET['name'];
-  
+    
 if(isset($_POST['selectTickets'])){
     require 'php_helper/opendb.php';
+    
     $sql = "SELECT showtime.showtime_id
-FROM akcopema.showtime 
-JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
-JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
-WHERE TIME_START = '$movieTime[0]'
-AND movie.MOVIE_NAME = '$movieInfo[0]'";
+            FROM akcopema.showtime 
+            JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
+            JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
+            WHERE TIME_START = '$movieTime'
+            AND movie.MOVIE_NAME = '$movieInfo[1]'";
     
     $result = mysqli_query($conn,$sql) or die(mysql_error());
     $row = mysqli_fetch_array($result,MYSQLI_BOTH); 
-    
     $showtime_id=$row[0];  
     $dateFmt = date('o').'-'.date('m').'-'.date('d');
     $ticket_number = $_POST['selectTickets'];
     
-    $sql2 = "INSERT INTO `akcopema`.`reservation`
-(`USER_EMAIL`,
-`SHOWTIME_ID`,
-`RESERVATION_TICKETNUM`,
-`RESERVATION_CREATION`,
-`RESERVATION_DATE`)
-VALUES
-('$email',
-'$showtime_id',
-'$ticket_number',
-'$dateFmt',
-'$dateFmt');";
+    $sql2 = "INSERT INTO `akcopema`.`reservation`(`USER_EMAIL`,`SHOWTIME_ID`,`RESERVATION_TICKETNUM`,`RESERVATION_CREATION`,`RESERVATION_DATE`)
+            VALUES('$email','$showtime_id','$ticket_number','$dateFmt','$dateFmt');";
     
-    if(!mysqli_query($conn,$sql2)){
-        echo "Houston... We have a problem... :/";
-    }
-    else{
+    if (mysqli_query($conn, $sql2)) {
         header('location:editReservation.php');
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 }
 ?>
@@ -123,14 +110,19 @@ VALUES
                 <div class="col-lg-2">
                   <div class="form-group">
 
-                    <label for="sel1">Researve tickets:</label>
-                    <select class="form-control" name="selectTickets">
-                        <?php
-                            for($i=1; $i <= $ticketsRemaining; $i++){
-                                echo "<option value='$i''>$i</option>";
+                    <label>Researve tickets:</label>
+                      <?php
+                            if($ticketsRemaining <= 0){
+                                echo '<p>There are no tickets remaining for this movie.</p>';
+                            }else{
+                                echo'<select class="form-control" name="selectTickets">';
+                                for($i=1; $i <= $ticketsRemaining; $i++){
+                                    echo "<option value='$i''>$i</option>";
+                                }
+                        
+                                echo '<input type="submit" formmethod="post" value="Submit">';
                             }
-                        ?>
-                        <input type="submit" formmethod="post" value="Submit">
+                            ?>
                     </select>
                  </div> 
                 </div>
@@ -138,7 +130,6 @@ VALUES
             </div>
        </div>    
     </form>
-<?php print_r($_POST);?>
     <!--
     <div class="container">
         <form>

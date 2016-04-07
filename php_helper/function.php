@@ -171,3 +171,23 @@ AND t1.MOVIE_NAME = '$movieName'";
     mysqli_close($conn);
     return $row[0];
 }
+
+function getMovieID($movieTime, $movieInfo){
+    require 'php_helper/opendb.php';
+    
+    $sql = "SELECT showtime.showtime_id
+FROM akcopema.showtime 
+JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
+JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
+WHERE TIME_START = '$movieTime[0]'
+AND movie.MOVIE_NAME = '$movieInfo[0]'";
+    
+    $result = mysqli_query($conn,$sql) or die(mysql_error());
+    $row = mysqli_fetch_array($result,MYSQLI_BOTH); 
+    $showtime_id=$row['SHOWTIME_ID'];  
+    
+        mysqli_free_result($result);       
+    //Close connection
+    mysqli_close($conn);
+    return $showtime_id;
+}
