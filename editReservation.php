@@ -17,7 +17,7 @@
         JOIN akcopema.showtime ON reservation.showtime_id = showtime.showtime_id
         JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
         JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
-        JOIN USER_ACCOUNT ON user_account.USER_EMAIL = reservation.user_email
+        JOIN user_account ON user_account.USER_EMAIL = reservation.user_email
         WHERE reservation.USER_EMAIL = '$useremail'";
 
     $result = mysqli_query($conn,$sql) or die(mysql_error());
@@ -65,7 +65,7 @@
                     JOIN akcopema.showtime ON reservation.showtime_id = showtime.showtime_id
                     JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
                     JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
-                    JOIN USER_ACCOUNT ON user_account.USER_EMAIL = reservation.user_email
+                    JOIN user_account ON user_account.USER_EMAIL = reservation.user_email
                     WHERE reservation.USER_EMAIL = '$useremail'";
 
                 $result = mysqli_query($conn,$sql) or die(mysql_error());
