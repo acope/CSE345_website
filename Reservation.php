@@ -103,7 +103,7 @@ if(isset($_POST['selectTickets'])){
                 <div class="col-lg-2">
                   <div class="form-group">
 
-                    <label>Researve tickets:</label>
+                    <label>Researve tickets for showtime <?php echo $_GET['id']; ?>:</label>
                       <?php
                             if($ticketsRemaining <= 0){
                                 echo '<p>There are no tickets remaining for this movie.</p>';
