@@ -12,7 +12,7 @@
         $street = $_POST['street'];
         $zip = $_POST['zip'];
 
-        $sql = "SELECT USER_EMAIL FROM akcopema.user_account WHERE USER_EMAIL = '$email';";
+        $sql = "SELECT USER_EMAIL FROM 2100695_cse345.user_account WHERE USER_EMAIL = '$email';";
     
         //Create search query
         $result = mysqli_query($conn,$sql) or die(mysql_error());
@@ -26,7 +26,7 @@
             
 
             //INSERT ACCOUNT
-            $sql1 = "INSERT INTO `akcopema`.`user_account`
+            $sql1 = "INSERT INTO `2100695_cse345`.`user_account`
                     (`USER_EMAIL`,
                     `USER_PASSENCRYPT`,
                     `USER_FNAME`,

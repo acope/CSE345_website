@@ -1,5 +1,5 @@
 /*
--- Query: SELECT * FROM akcopema.showtime
+-- Query: SELECT * FROM 2100695_cse345.showtime
 LIMIT 0, 1000
 
 -- Date: 2016-04-07 15:35

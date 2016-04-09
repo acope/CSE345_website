@@ -9,43 +9,12 @@
     $bourneIdentityTimes = array();
     $planetOfTheApesTimes = array();
 
-    $sql = "SELECT * FROM
-(SELECT showtime.SHOWTIME_ID, movie.MOVIE_ID, movie.MOVIE_NAME, movie.MOVIE_DIRECTOR, movie.MOVIE_LEAD_ACTOR, movie.MOVIE_RATING, movie.MOVIE_DESCRIPTION, movie.MOVIE_YEAR, movie.MOVIE_RUNTIME, movie.MOVIE_YOUTUBE, TIME_START FROM MOVIE_TIMES
-JOIN showtime ON movie_times.SHOWTIME_ID=showtime.SHOWTIME_ID
-JOIN movie ON movie.MOVIE_ID = movie_times.MOVIE_ID) AS T1";
+    $darkKnightTimes = getMovieTimes($darkKnight); 
+    $everestTimes = getMovieTimes($everest); 
+    $interstellarTimes = getMovieTimes($interstellar); 
+    $bourneIdentityTimes = getMovieTimes($bourneIdentity); 
+    $planetOfTheApesTimes = getMovieTimes($planetOfTheApes); 
 
-    $result = mysqli_query($conn,$sql) or die(mysql_error());
-
-    //Grab movie times for each movie and insert into time array
-    //Create session varaibles for movie names and move ID
-    while($row = mysqli_fetch_array($result)){
-        $movieName = $row['MOVIE_NAME'];
-        $movieTimeStart = $row['TIME_START'];
-        $movieID = $row['MOVIE_ID'];
-        $movieDirector = $row['MOVIE_DIRECTOR'];
-        $movieLeadActor = $row['MOVIE_LEAD_ACTOR'];
-        $movieRating = $row['MOVIE_RATING'];
-        $movieDescription = $row['MOVIE_DESCRIPTION'];
-        $movieYear = $row['MOVIE_YEAR'];
-        $movieRuntime = $row['MOVIE_RUNTIME'];
-        $movieYoutubeLink = $row['MOVIE_YOUTUBE'];
-        
-        if($movieName == $darkKnight){
-            array_push($darkKnightTimes, $movieTimeStart);
-        }
-        if($movieName == $everest){
-            array_push($everestTimes, $movieTimeStart);
-        }
-        if($movieName == $interstellar){
-            array_push($interstellarTimes, $movieTimeStart);
-        }
-        if($movieName == $bourneIdentity){
-            array_push($bourneIdentityTimes, $movieTimeStart);
-        }
-        if($movieName == $planetOfTheApes){
-            array_push($planetOfTheApesTimes, $movieTimeStart);
-        } 
-    }
 ?>
 
 <table class='table table-bordered movie-table'>
@@ -171,38 +140,6 @@ JOIN movie ON movie.MOVIE_ID = movie_times.MOVIE_ID) AS T1";
         }
     ?>    
     </tr>
-    
 
-
-        
-   
-<?php
-    echo "</tbody>";
-    echo "</table>";
-
-    // The following is used for testing purposes only
-   // session_unset();
-  // print_r($_SESSION);
-    //echo"</br>";
-/*
-    var_dump($darkKnight);
-    echo "</br>";
-    var_dump($darkKnightTimes);
-    echo "</br>";
-    var_dump($everest);
-    echo "</br>";
-    var_dump($everestTimes);
-    echo "</br>";
-    var_dump($interstellar);
-    echo "</br>";
-    var_dump($interstellarTimes);
-    echo "</br>";
-    var_dump($bourneIdentity);
-    echo "</br>";
-    var_dump($bourneIdentityTimes);
-    echo "</br>";
-    var_dump($planetOfTheApes);
-    echo "</br>";
-    var_dump($planetOfTheApesTimes);
-    // end of testing
-*/
+    </tbody>
+    </table>

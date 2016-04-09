@@ -107,7 +107,7 @@ function createAccount(){
     
     require 'php_helper/opendb.php';
     
-    $sql = "SELECT USER_EMAIL FROM akcopema.user_account WHERE USER_EMAIL = '$email';";
+    $sql = "SELECT USER_EMAIL FROM 2100695_cse345.user_account WHERE USER_EMAIL = '$email';";
     
     //Create search query
     $result = mysqli_query($conn,$sql) or die(mysql_error());
@@ -125,7 +125,7 @@ function createAccount(){
     mysqli_free_result($result);   
     
     //INSERT ACCOUNT
-    $sql = "INSERT INTO `akcopema`.`user_account`
+    $sql = "INSERT INTO `2100695_cse345`.`user_account`
             (`USER_EMAIL`,
             `USER_PASSENCRYPT`,
             `USER_FNAME`,
@@ -156,8 +156,8 @@ function getTotalOrderedTickets($movieTime, $movieName){
     
     $sql = "SELECT SUM(RESERVATION_TICKETNUM) FROM
 (SELECT reservation.RESERVATION_TICKETNUM, movie.MOVIE_NAME, showtime.TIME_START
-FROM akcopema.reservation
-JOIN akcopema.showtime ON reservation.showtime_id = showtime.showtime_id
+FROM 2100695_cse345.reservation
+JOIN 2100695_cse345.showtime ON reservation.showtime_id = showtime.showtime_id
 JOIN movie_times ON showtime.showtime_id = movie_times.showtime_id
 JOIN movie on movie_times.movie_id = movie.MOVIE_ID)
 AS t1 WHERE t1.TIME_START = '$movieTime'
@@ -176,7 +176,7 @@ function getMovieID($movieTime, $movieInfo){
     require 'php_helper/opendb.php';
     
     $sql = "SELECT showtime.showtime_id
-FROM akcopema.showtime 
+FROM 2100695_cse345.showtime 
 JOIN movie_times ON showtime.showtime_id = movie_times.showtime_id
 JOIN movie on movie_times.movie_id = movie.MOVIE_ID
 WHERE TIME_START = '$movieTime[0]'

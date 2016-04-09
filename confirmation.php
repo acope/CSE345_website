@@ -72,10 +72,11 @@
                     
                         echo('<h1>CONGRATS!</h1>');
                         echo('Your Reservation for '.$_GET['name']. ' at '.$_GET['id'].' has been sucessfully created <br>');
-                        echo('Page should automatically redirect your to your reservations if not click on the link below<br>');
+                        echo('Click on the link below to see your reservations <br>');
+                       // echo('Page should automatically redirect your to your reservations if not click on the link below<br>');
                         echo('<a  href="'.$url.'" target="_self">CLICK HERE </a>');
                         //header('Location: ' . $url, true, 302);              // Use either 301 or 302
-                        header( "refresh:5;$url" );
+                        //header( "refresh:5;$url" );
                     ?>
                 </div>
             </div>  
