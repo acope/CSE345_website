@@ -27,8 +27,11 @@
   - Also populates movie times
   - Allows user to click on movie time that they would like to researve or go and edit previous reservations
 - Edit Reservation Page
-  - Allows a user to view their reservations for each show and showtime
-  - Allows a user to edit how many tickets they would like to researve
+  - Page Created but not fully working on OU school server
+    -Page shows but table is not populated
+    -Problem is with PHP code, do not know how to debug
+  - Page semi works on localhost
+    - Page table is populated but cannot update quantity
 - Confirmation Page
  - Gives the user information about what movie and time that they reserved tickets for
  - Automatically redirects user to edit reservation page or user can click on link
@@ -48,12 +51,14 @@
 - When a user creates a new reservation it updates the original quantity if one exists instead of creating a new reservation
 - Update the look of the website
 - No way of user reserving tickets for a show a week out in advance only for that day
+- Fix edit reservation page
 
 ##Contributions :clap:
 - Austin(Group Leader)
   - index page
   - login page
   - account creation page
+  - Debugging
 - Farron
   - confirmation page
   - editReservation page
