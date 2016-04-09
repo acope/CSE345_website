@@ -1,3 +1,3 @@
 USER_EMAIL,USER_PASSENCRYPT,USER_FNAME,USER_LNAME,USER_STREETNUM,USER_STREET,USER_ZIP
-akcopema@oakland.edu,1234,Austin,Copeman,1234,test,12345
+2100695_cse345@oakland.edu,1234,Austin,Copeman,1234,test,12345
 jdoe@cse345.edu,1234,John,Doe,1234,"Database Street",12345

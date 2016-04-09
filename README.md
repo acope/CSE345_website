@@ -4,7 +4,7 @@
 ## All source code was uploaded to [GitHub](https://github.com/acope/CSE345_website)
 [Source code on GitHub](https://github.com/acope/CSE345_website)
 
-[OU Website](http://www.secs.oakland.edu/~akcopema/)
+[OU Website](http://www.secs.oakland.edu/~2100695_cse345/)
 
 ##Working Items / Finished :smile:
 - LOGIN and LOGOUT
@@ -35,13 +35,13 @@
   
   
 - Created All Pages
-  - http://www.secs.oakland.edu/~akcopema/
-  - http://www.secs.oakland.edu/~akcopema/login.php
-  - http://www.secs.oakland.edu/~akcopema/confirmation.php
-  - http://www.secs.oakland.edu/~akcopema/movieInfo.php
-  - http://www.secs.oakland.edu/~akcopema/Reservation.php
-  - http://www.secs.oakland.edu/~akcopema/accountCreation.php
-  - http://www.secs.oakland.edu/~akcopema/editReservation.php
+  - http://www.secs.oakland.edu/~2100695_cse345/
+  - http://www.secs.oakland.edu/~2100695_cse345/login.php
+  - http://www.secs.oakland.edu/~2100695_cse345/confirmation.php
+  - http://www.secs.oakland.edu/~2100695_cse345/movieInfo.php
+  - http://www.secs.oakland.edu/~2100695_cse345/Reservation.php
+  - http://www.secs.oakland.edu/~2100695_cse345/accountCreation.php
+  - http://www.secs.oakland.edu/~2100695_cse345/editReservation.php
 
 ##TO-DO :worried:
 - When on edit reservation page, change "edit reservation" link to home page link

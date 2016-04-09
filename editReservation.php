@@ -13,8 +13,8 @@
     $error_array = array();
 
     $sql = "SELECT reservation.RESERVATION_ID, user_account.USER_EMAIL, reservation.RESERVATION_TICKETNUM, movie.MOVIE_NAME, showtime.TIME_START
-        FROM akcopema.reservation
-        JOIN akcopema.showtime ON reservation.showtime_id = showtime.showtime_id
+        FROM 2100695_cse345.reservation
+        JOIN 2100695_cse345.showtime ON reservation.showtime_id = showtime.showtime_id
         JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
         JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
         JOIN user_account ON user_account.USER_EMAIL = reservation.user_email
@@ -39,11 +39,11 @@
             
             if($quant <= $ticketsLeft){
                 if($quant===0){
-                    $sql = "DELETE FROM `akcopema`.`reservation`
+                    $sql = "DELETE FROM `2100695_cse345`.`reservation`
                         WHERE RESERVATION_ID='$reservationID[$i]';";
                 }
                 else{
-                    $sql = "UPDATE `akcopema`.`reservation`
+                    $sql = "UPDATE `2100695_cse345`.`reservation`
                         SET `RESERVATION_TICKETNUM` = '$quant'
                         WHERE `RESERVATION_ID` = '$reservationID[$i]'";
                 }
@@ -61,8 +61,8 @@
                 $error_array = array();
 
                 $sql = "SELECT reservation.RESERVATION_ID, user_account.USER_EMAIL, reservation.RESERVATION_TICKETNUM, movie.MOVIE_NAME, showtime.TIME_START
-                    FROM akcopema.reservation
-                    JOIN akcopema.showtime ON reservation.showtime_id = showtime.showtime_id
+                    FROM 2100695_cse345.reservation
+                    JOIN 2100695_cse345.showtime ON reservation.showtime_id = showtime.showtime_id
                     JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
                     JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
                     JOIN user_account ON user_account.USER_EMAIL = reservation.user_email
