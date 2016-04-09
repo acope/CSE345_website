@@ -107,7 +107,7 @@ function createAccount(){
     
     require 'php_helper/opendb.php';
     
-    $sql = "SELECT USER_EMAIL FROM 2100695_cse345.user_account WHERE USER_EMAIL = '$email';";
+    $sql = "SELECT USER_EMAIL FROM akcopema.user_account WHERE USER_EMAIL = '$email';";
     
     //Create search query
     $result = mysqli_query($conn,$sql) or die(mysql_error());
@@ -125,7 +125,7 @@ function createAccount(){
     mysqli_free_result($result);   
     
     //INSERT ACCOUNT
-    $sql = "INSERT INTO `2100695_cse345`.`user_account`
+    $sql = "INSERT INTO `akcopema`.`user_account`
             (`USER_EMAIL`,
             `USER_PASSENCRYPT`,
             `USER_FNAME`,
@@ -156,8 +156,8 @@ function getTotalOrderedTickets($movieTime, $movieName){
     
     $sql = "SELECT SUM(RESERVATION_TICKETNUM) FROM
 (SELECT reservation.RESERVATION_TICKETNUM, movie.MOVIE_NAME, showtime.TIME_START
-FROM 2100695_cse345.reservation
-JOIN 2100695_cse345.showtime ON reservation.showtime_id = showtime.showtime_id
+FROM akcopema.reservation
+JOIN akcopema.showtime ON reservation.showtime_id = showtime.showtime_id
 JOIN movie_times ON showtime.showtime_id = movie_times.showtime_id
 JOIN movie on movie_times.movie_id = movie.MOVIE_ID)
 AS t1 WHERE t1.TIME_START = '$movieTime'
@@ -176,7 +176,7 @@ function getMovieID($movieTime, $movieInfo){
     require 'php_helper/opendb.php';
     
     $sql = "SELECT showtime.showtime_id
-FROM 2100695_cse345.showtime 
+FROM akcopema.showtime 
 JOIN movie_times ON showtime.showtime_id = movie_times.showtime_id
 JOIN movie on movie_times.movie_id = movie.MOVIE_ID
 WHERE TIME_START = '$movieTime[0]'
@@ -191,3 +191,162 @@ AND movie.MOVIE_NAME = '$movieInfo[0]'";
     mysqli_close($conn);
     return $showtime_id;
 }
+
+function createUser($email, $password, $fname, $lname, $street_num, $street, $zip){
+    require 'php_helper/opendb.php';
+    
+    $sql = "SELECT USER_EMAIL FROM akcopema.user_account WHERE USER_EMAIL = '$email';";
+    
+    //Create search query
+    $result = mysqli_query($conn,$sql) or die(mysql_error());
+
+    //Grab Associative array
+    $row = mysqli_fetch_array($result,MYSQLI_BOTH);
+
+    $DBEmails = array($row['USER_EMAIL']);
+    var_dump($DBEmails);
+    if(count($DBEmails < 1)){
+
+
+        //INSERT ACCOUNT
+        $sql1 = "INSERT INTO `akcopema`.`user_account`
+                (`USER_EMAIL`,
+                `USER_PASSENCRYPT`,
+                `USER_FNAME`,
+                `USER_LNAME`,
+                `USER_STREETNUM`,
+                `USER_STREET`,
+                `USER_ZIP`)
+                VALUES
+                ('$email',
+                '$password',
+                '$fname',
+                '$lname',
+                '$street_num',
+                '$street',
+                '$zip');";
+
+        if (mysqli_query($conn, $sql1)) {
+            header("location: login.php");
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+
+    // Free result set
+    mysqli_free_result($result);
+
+    //Close connection
+    mysqli_close($conn);
+}
+
+/*
+ *-------------------------------------------------------------------------------------
+ *The Following is used for edit reservation page
+ *-------------------------------------------------------------------------------------
+*/
+function getMovieNameArray($useremail){
+    require 'php_helper/opendb.php';
+    $movieName = array();
+
+    $sql = "SELECT movie.MOVIE_NAME
+        FROM akcopema.reservation
+         JOIN akcopema.showtime ON reservation.showtime_id = showtime.showtime_id
+         JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
+        JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
+        WHERE reservation.USER_EMAIL = '$useremail'";
+    
+    //Create search query
+    $result = mysqli_query($conn,$sql) or die(mysql_error());
+    
+    //Grab Associative array
+     while($row = mysqli_fetch_array($result,MYSQLI_BOTH)){
+        array_push($movieName, $row['MOVIE_NAME']);
+    }
+        // Free result set
+    mysqli_free_result($result);
+
+    //Close connection
+    mysqli_close($conn);
+    
+    return $movieName;
+}
+
+function getMovieTimeArray($useremail){
+    require 'php_helper/opendb.php';
+    $movieTime = array();
+
+    $sql = "SELECT reservation.RESERVATION_ID, user_account.USER_EMAIL, reservation.RESERVATION_TICKETNUM, movie.MOVIE_NAME, showtime.TIME_START
+        FROM akcopema.reservation
+        JOIN akcopema.showtime ON reservation.showtime_id = showtime.showtime_id
+        JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
+        JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
+        JOIN user_account ON user_account.USER_EMAIL = reservation.user_email
+        WHERE reservation.USER_EMAIL = '$useremail'";
+
+    $result = mysqli_query($conn,$sql) or die(mysql_error());
+    
+     while($row = mysqli_fetch_array($result)){
+        array_push($movieTime, $row['TIME_START']);
+    }
+        // Free result set
+    mysqli_free_result($result);
+
+    //Close connection
+    mysqli_close($conn);
+    
+    return $movieTime;
+}
+
+function getTicketQtyArray($useremail){
+    require 'php_helper/opendb.php';
+    $quantity = array();
+
+    $sql = "SELECT reservation.RESERVATION_ID, user_account.USER_EMAIL, reservation.RESERVATION_TICKETNUM, movie.MOVIE_NAME, showtime.TIME_START
+        FROM akcopema.reservation
+        JOIN akcopema.showtime ON reservation.showtime_id = showtime.showtime_id
+        JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
+        JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
+        JOIN user_account ON user_account.USER_EMAIL = reservation.user_email
+        WHERE reservation.USER_EMAIL = '$useremail'";
+
+    $result = mysqli_query($conn,$sql) or die(mysql_error());
+    
+     while($row = mysqli_fetch_array($result)){
+        array_push($quantity, $row['RESERVATION_TICKETNUM']);
+    }
+        // Free result set
+    mysqli_free_result($result);
+
+    //Close connection
+    mysqli_close($conn);
+    
+    return $quantity;
+}
+
+function getReservationIDArray($useremail){
+    require 'php_helper/opendb.php';
+    $reservationID = array();
+
+    $sql = "SELECT reservation.RESERVATION_ID, user_account.USER_EMAIL, reservation.RESERVATION_TICKETNUM, movie.MOVIE_NAME, showtime.TIME_START
+        FROM akcopema.reservation
+        JOIN akcopema.showtime ON reservation.showtime_id = showtime.showtime_id
+        JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
+        JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
+        JOIN user_account ON user_account.USER_EMAIL = reservation.user_email
+        WHERE reservation.USER_EMAIL = '$useremail'";
+
+    $result = mysqli_query($conn,$sql) or die(mysql_error());
+    
+     while($row = mysqli_fetch_array($result)){
+        array_push($reservationID, $row['RESERVATION_ID']);
+    }
+        // Free result set
+    mysqli_free_result($result);
+
+    //Close connection
+    mysqli_close($conn);
+    
+    return $reservationID;
+}
+ 

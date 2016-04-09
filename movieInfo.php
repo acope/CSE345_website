@@ -76,13 +76,13 @@ $movieTimes = getMovieTimes($_GET['name']);
                                     <dd> <?php echo $movieInfo[7] ?> minutes</dd>
                                     
                                     <dt>Director</dt>
-                                    <dd> <?php echo $movieInfo[2] ?> minutes</dd>
+                                    <dd> <?php echo $movieInfo[2] ?></dd>
                                     
                                     <dt>Lead Actor</dt>
-                                    <dd> <?php echo $movieInfo[3] ?> minutes</dd>
+                                    <dd> <?php echo $movieInfo[3] ?></dd>
                                     
                                     <dt>Rating</dt>
-                                    <dd> <?php echo $movieInfo[4] ?> minutes</dd>
+                                    <dd> <?php echo $movieInfo[4] ?></dd>
                                 </dl>
                                 
                             </div>

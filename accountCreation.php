@@ -1,6 +1,7 @@
 <?php 
-    session_start();
+    //session_start();
     require 'php_helper/opendb.php';
+    require 'php_helper/function.php';
 
     if (isset($_POST['submit']))
     {
@@ -11,53 +12,8 @@
         $street_num = $_POST['street_num'];
         $street = $_POST['street'];
         $zip = $_POST['zip'];
-
-        $sql = "SELECT USER_EMAIL FROM 2100695_cse345.user_account WHERE USER_EMAIL = '$email';";
-    
-        //Create search query
-        $result = mysqli_query($conn,$sql) or die(mysql_error());
-
-        //Grab Associative array
-        $row = mysqli_fetch_array($result,MYSQLI_BOTH);
-
-        $DBEmails = array($row['USER_EMAIL']);
-
-        if(count($DBEmails < 1)){
-            
-
-            //INSERT ACCOUNT
-            $sql1 = "INSERT INTO `2100695_cse345`.`user_account`
-                    (`USER_EMAIL`,
-                    `USER_PASSENCRYPT`,
-                    `USER_FNAME`,
-                    `USER_LNAME`,
-                    `USER_STREETNUM`,
-                    `USER_STREET`,
-                    `USER_ZIP`)
-                    VALUES
-                    ('$email',
-                    '$password',
-                    '$fname',
-                    '$lname',
-                    '$street_num',
-                    '$street',
-                    '$zip');";
-
-            if(!mysqli_query($conn,$sql1))
-            {
-                echo "Houston... We have a problem... :/";
-            }
-            else
-            {
-                header('location:login.php');
-            }
-        }
         
-        // Free result set
-        mysqli_free_result($result);
-        
-        //Close connection
-        mysqli_close($conn);
+        createUser($email, $password, $fname, $lname, $street_num, $street, $zip);
     }//end if
 ?>
 

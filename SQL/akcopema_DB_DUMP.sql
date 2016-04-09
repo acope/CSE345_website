@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: localhost    Database: 2100695_cse345
+-- Host: localhost    Database: akcopema
 -- ------------------------------------------------------
 -- Server version	5.7.11-log
 
@@ -215,7 +215,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `new_view` AS select `t1`.`MOVIE_NAME` AS `MOVIE_NAME`,`t1`.`MOVIE_ID` AS `MOVIE_ID`,`t1`.`SHOWTIME_ID` AS `SHOWTIME_ID`,`t1`.`TIME_START` AS `TIME_START`,`t1`.`TIME_END` AS `TIME_END` from (select `2100695_cse345`.`showtime`.`SHOWTIME_ID` AS `SHOWTIME_ID`,`2100695_cse345`.`movie`.`MOVIE_ID` AS `MOVIE_ID`,`2100695_cse345`.`showtime`.`TIME_START` AS `TIME_START`,`2100695_cse345`.`showtime`.`TIME_END` AS `TIME_END`,`2100695_cse345`.`movie`.`MOVIE_NAME` AS `MOVIE_NAME` from ((`2100695_cse345`.`movie_times` join `2100695_cse345`.`showtime` on((`2100695_cse345`.`movie_times`.`SHOWTIME_ID` = `2100695_cse345`.`showtime`.`SHOWTIME_ID`))) join `2100695_cse345`.`movie` on((`2100695_cse345`.`movie`.`MOVIE_ID` = `2100695_cse345`.`movie_times`.`MOVIE_ID`)))) `t1` where (`t1`.`MOVIE_NAME` = 'The Dark Knight') */;
+/*!50001 VIEW `new_view` AS select `t1`.`MOVIE_NAME` AS `MOVIE_NAME`,`t1`.`MOVIE_ID` AS `MOVIE_ID`,`t1`.`SHOWTIME_ID` AS `SHOWTIME_ID`,`t1`.`TIME_START` AS `TIME_START`,`t1`.`TIME_END` AS `TIME_END` from (select `akcopema`.`showtime`.`SHOWTIME_ID` AS `SHOWTIME_ID`,`akcopema`.`movie`.`MOVIE_ID` AS `MOVIE_ID`,`akcopema`.`showtime`.`TIME_START` AS `TIME_START`,`akcopema`.`showtime`.`TIME_END` AS `TIME_END`,`akcopema`.`movie`.`MOVIE_NAME` AS `MOVIE_NAME` from ((`akcopema`.`movie_times` join `akcopema`.`showtime` on((`akcopema`.`movie_times`.`SHOWTIME_ID` = `akcopema`.`showtime`.`SHOWTIME_ID`))) join `akcopema`.`movie` on((`akcopema`.`movie`.`MOVIE_ID` = `akcopema`.`movie_times`.`MOVIE_ID`)))) `t1` where (`t1`.`MOVIE_NAME` = 'The Dark Knight') */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;

@@ -3,33 +3,16 @@
     require('php_helper/opendb.php');
     require('php_helper/function.php');
     
-    
+
     $useremail = $_SESSION['user_email'];
 
-    $movieName = array();
-    $movieTime = array();
-    $quantity = array();
-    $reservationID = array();
+    $movieName = getMovieNameArray($useremail);
+    $movieTime = getMovieTimeArray($useremail);
+    $quantity = getTicketQtyArray($useremail);
+    $reservationID = getReservationIDArray($useremail);
     $error_array = array();
 
-    $sql = "SELECT reservation.RESERVATION_ID, user_account.USER_EMAIL, reservation.RESERVATION_TICKETNUM, movie.MOVIE_NAME, showtime.TIME_START
-        FROM 2100695_cse345.reservation
-        JOIN 2100695_cse345.showtime ON reservation.showtime_id = showtime.showtime_id
-        JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
-        JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
-        JOIN user_account ON user_account.USER_EMAIL = reservation.user_email
-        WHERE reservation.USER_EMAIL = '$useremail'";
 
-    $result = mysqli_query($conn,$sql) or die(mysql_error());
-
-    //Grab movie times for each movie and insert into time array
-    //Create session varaibles for movie names and move ID
-    while($row = mysqli_fetch_array($result)){
-        array_push($movieName, $row['MOVIE_NAME']);
-        array_push($movieTime, $row['TIME_START']);
-        array_push($quantity, $row['RESERVATION_TICKETNUM']);
-        array_push($reservationID, $row['RESERVATION_ID']);
-    }
 
     if (isset($_POST['submit'])){        
         
@@ -39,45 +22,19 @@
             
             if($quant <= $ticketsLeft){
                 if($quant===0){
-                    $sql = "DELETE FROM `2100695_cse345`.`reservation`
+                    $sql = "DELETE FROM `akcopema`.`reservation`
                         WHERE RESERVATION_ID='$reservationID[$i]';";
                 }
                 else{
-                    $sql = "UPDATE `2100695_cse345`.`reservation`
+                    $sql = "UPDATE `akcopema`.`reservation`
                         SET `RESERVATION_TICKETNUM` = '$quant'
                         WHERE `RESERVATION_ID` = '$reservationID[$i]'";
                 }
-
-                if(!mysqli_query($conn,$sql))
-                {
-                    $error_string = "Update on $movieName[$i] at $movieTime[$i] has failed. Changes were discarded.<br/>\n";
-                    array_push($error_array, $error_string);
-                }
                 
-                $movieName = array();
-                $movieTime = array();
-                $quantity = array();
-                $reservationID = array();
-                $error_array = array();
-
-                $sql = "SELECT reservation.RESERVATION_ID, user_account.USER_EMAIL, reservation.RESERVATION_TICKETNUM, movie.MOVIE_NAME, showtime.TIME_START
-                    FROM 2100695_cse345.reservation
-                    JOIN 2100695_cse345.showtime ON reservation.showtime_id = showtime.showtime_id
-                    JOIN MOVIE_TIMES ON showtime.showtime_id = movie_times.showtime_id
-                    JOIN MOVIE on movie_times.movie_id = movie.MOVIE_ID
-                    JOIN user_account ON user_account.USER_EMAIL = reservation.user_email
-                    WHERE reservation.USER_EMAIL = '$useremail'";
-
-                $result = mysqli_query($conn,$sql) or die(mysql_error());
-
-                //Grab movie times for each movie and insert into time array
-                //Create session varaibles for movie names and move ID
-                while($row = mysqli_fetch_array($result)){
-                    array_push($movieName, $row['MOVIE_NAME']);
-                    array_push($movieTime, $row['TIME_START']);
-                    array_push($quantity, $row['RESERVATION_TICKETNUM']);
-                    array_push($reservationID, $row['RESERVATION_ID']);
-                }
+                $movieName = getMovieNameArray($useremail);
+                $movieTime = getMovieTimeArray($useremail);
+                $quantity = getTicketQtyArray($useremail);
+                $reservationID = getReservationIDArray($useremail);
                 header( "editReservation.php" );
             }
             else{
@@ -99,6 +56,7 @@
             header( "refresh:5;editReservation.php" );
         }
     }
+    
 ?>
 
 <!DOCTYPE html>
@@ -165,7 +123,26 @@
         <div class="form-wrapper">  
             <form action="#" method="post"> 
                 <div class="col-lg-12">
-                    <?php require 'php_helper/reservation_table.php';?>
+                    <table class='table table-bordered movie-table'>
+                        <thead>
+                            <tr>
+                                <th>Movie</th><th>Time</th><th>Quantity</th>
+                            </tr>
+                        </thread>
+
+                        <tbody>
+                        <?php
+                            //If the user is logged in take them to the reservation page
+                            for($i=0; $i<count($movieName); $i++){
+                                echo "<tr>";
+                                echo "<td>$movieName[$i]</td>";
+                                echo "<td>$movieTime[$i]</td>";
+                                echo '<td><div class="form-item"><input type="number" name="quantity'.$i.'" required="required" value="'.$quantity[$i].'"></input> </div></td>';
+                                echo "</tr>";
+                            }
+                        ?>  
+                       </tbody>
+                    </table>
                 </div>
 
             <div class="col-lg-12 col-lg-offset-5">
