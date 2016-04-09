@@ -89,10 +89,25 @@ $movieTimes = getMovieTimes($_GET['name']);
                             <div class="col-lg-4 movie-table"> 
                                 <h3><b>Movie Times</b></h3>
                                 <?php 
-                                    for($i=0; $i<count($movieTimes); $i++){
-                                        echo "<a  href='Reservation.php?name=$movieInfo[1]&id=$movieTimes[$i]' target='_self' > $movieTimes[$i] </a>";
-                                    }
+                                   // for($i=0; $i<count($movieTimes); $i++){
+                                    //    echo "<a  href='Reservation.php?name=$movieInfo[1]&id=$movieTimes[$i]' target='_self' > $movieTimes[$i] </a>";
+                                    //}
                                 ?>
+                                
+                                <?php 
+                                    if($_SESSION['loggedin'] == 1){ 
+
+                                            for($i=0; $i<count($movieTimes); $i++){
+                                                echo "<a  href='Reservation.php?name=$movieInfo[1]&id=$movieTimes[$i] target='_self'> $movieTimes[$i] </a>";
+                                            }
+                                    //else take them to the log in page then to the reservation page    
+                                    }else{     
+                                            for($i=0; $i<count($movieTimes); $i++){
+                                                echo "<a  href='login.php?name=$movieInfo[1]&id=$movieTimes[$i] ' target='_self'> $movieTimes[$i] </a>";
+                                            }
+                                    }
+                                ?>  
+                                
                             </div>
                         </div>
                     </div>

@@ -68,11 +68,11 @@
 
     <!-- Image Carousel Section -->
     <!-- Images will be placed here, images can include food, movies, ect.-->
+
     <section id="carousel">
         <div class="carousel-section">
             <div class="fluid-container">
                 <div class="col-lg-12">
-                    <!--Start of Carousel-->
                         <div class="wrapper-with-margin" style="padding: 10px">
                             <div id="projects-carousel" class="owl-carousel owl-theme">
                                 <div class="item"><a><img class="lazyOwl" src="http://www.filmsxpress.com/images/Carousel/143/Superman_vs_Batman-178752.jpg" alt="Superman vs Batman"></a></div>
@@ -88,11 +88,11 @@
             </div>
         </div>
     </section>
-    
-   
+
 <div class="container">
-    <?php require 'php_helper/movie_times_table.php'; ?>
+   <?php require 'php_helper/movie_times_table.php'; ?> 
 </div>
+
    
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
